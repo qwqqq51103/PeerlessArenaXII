@@ -3,16 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package PeerlessArena;
+package PeerlessArenaXII;
 
 /**
  *
  * @author qwqqq
  */
-import PeerlessArena.npcmethod.npc;
+import PeerlessArenaXII.npcmethod.npc;
 import java.util.Scanner;
 import javax.swing.JOptionPane;
-import PeerlessArena.GameMed.GameContent;
+import PeerlessArenaXII.GameMed.GameContent;
 import com.sun.javafx.iio.ImageFrame;
 import javafx.scene.control.PopupControl;
 import javafx.scene.input.KeyCode;

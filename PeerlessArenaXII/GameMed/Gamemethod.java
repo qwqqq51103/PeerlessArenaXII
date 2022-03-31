@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package PeerlessArena.GameMed;
+package PeerlessArenaXII.GameMed;
 
-import PeerlessArena.npcmethod.monster;
-import PeerlessArena.npcmethod.npc;
+import PeerlessArenaXII.npcmethod.monster;
+import PeerlessArenaXII.npcmethod.npc;
 import java.util.Scanner;
-import PeerlessArena.ArenaPlayer;
-import PeerlessArena.GameVar;
+import PeerlessArenaXII.ArenaPlayer;
+import PeerlessArenaXII.GameVar;
 import javax.swing.JOptionPane;
 
 

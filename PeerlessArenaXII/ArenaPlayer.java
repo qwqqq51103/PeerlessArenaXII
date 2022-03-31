@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package PeerlessArena;
+package PeerlessArenaXII;
 
 import java.util.Scanner;
 import java.util.*;
 import javax.swing.JOptionPane;
-import PeerlessArena.GameMed.GameContent;
+import PeerlessArenaXII.GameMed.GameContent;
 
 /**
  *
