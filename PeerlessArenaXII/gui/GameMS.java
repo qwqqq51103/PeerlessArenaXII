@@ -25,6 +25,8 @@ public class GameMS extends javax.swing.JFrame {
     ArenaPlayer ap = new ArenaPlayer();
     monster mob = new monster();
     Gamemethod gm = new Gamemethod();
+    GameVar gv = new GameVar();
+    String a;
 
     /**
      * Creates new form GameMS
@@ -60,8 +62,6 @@ public class GameMS extends javax.swing.JFrame {
         同行奇遇 = new javax.swing.JButton();
         打怪修煉 = new javax.swing.JPanel();
         選擇怪物 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("你好！我是來打雜的");
@@ -77,13 +77,13 @@ public class GameMS extends javax.swing.JFrame {
         });
         outText.setViewportView(chatLog);
 
-        Name.setText("姓名");
+        Name.setText("姓名 :");
 
-        exp.setText("經驗");
+        exp.setText("經驗 :");
 
-        Level.setText("等級");
+        Level.setText("等級 :");
 
-        稱號.setText("稱號");
+        稱號.setText("稱號 :");
 
         更新.setText("更新(卡住請按)");
         更新.addActionListener(new java.awt.event.ActionListener() {
@@ -229,33 +229,19 @@ public class GameMS extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("jLabel1");
-
-        jLabel2.setText("jLabel2");
-
         javax.swing.GroupLayout 打怪修煉Layout = new javax.swing.GroupLayout(打怪修煉);
         打怪修煉.setLayout(打怪修煉Layout);
         打怪修煉Layout.setHorizontalGroup(
             打怪修煉Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, 打怪修煉Layout.createSequentialGroup()
-                .addContainerGap(462, Short.MAX_VALUE)
+                .addContainerGap(478, Short.MAX_VALUE)
                 .addComponent(選擇怪物)
                 .addGap(25, 25, 25))
-            .addGroup(打怪修煉Layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addGroup(打怪修煉Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         打怪修煉Layout.setVerticalGroup(
             打怪修煉Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, 打怪修煉Layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addComponent(jLabel1)
-                .addGap(35, 35, 35)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
+                .addContainerGap(215, Short.MAX_VALUE)
                 .addComponent(選擇怪物)
                 .addContainerGap())
         );
@@ -288,14 +274,6 @@ public class GameMS extends javax.swing.JFrame {
 
     private void 顯示夥伴AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_顯示夥伴AncestorAdded
 
-//        StringBuilder txt = new StringBuilder();
-//        for (int i = 0; i < GameVar.NpcName.length; i++) {
-//            txt.append((i+1) + "\n " +GameVar.NpcName[i]);
-//            if (i != GameVar.NpcName.length - 1) {
-//                txt.append("\n");
-//            }
-//        }
-//        jLabel1.setText(txt.toString());
     }//GEN-LAST:event_顯示夥伴AncestorAdded
 
     private void 夥伴資訊AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_夥伴資訊AncestorAdded
@@ -304,24 +282,27 @@ public class GameMS extends javax.swing.JFrame {
 
     private void 選擇夥伴ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_選擇夥伴ActionPerformed
 
-        npc.setChoosePartner();
-        npc.setLoves();
-        顯示夥伴.setText("目前夥伴 : " + GameVar.NpcName[GameVar.choose - 1]);
+        if (gv.isOneChoose) {
+            npc.setChoosePartner();
+            npc.setLoves();
+            顯示夥伴.setText("目前夥伴 : " + GameVar.NpcName[GameVar.choose - 1]);
+        } else {
+            a = "夥伴資訊：不可更換夥伴！";
+            printfChatLog(a);
+        }
         loveupdate();
     }//GEN-LAST:event_選擇夥伴ActionPerformed
 
     private void 更新ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_更新ActionPerformed
-        // TODO add your handling code here:
-        Name.setText("姓名 : " + GameVar.PlayerName);
-        Level.setText("等級 : " + GameVar.ChrLevel);
-        exp.setText("經驗 : " + GameVar.ChrExp);
-        稱號.setText("稱號 : " + GameVar.str);
+        // TODO add your handling code her
+        Updata();
     }//GEN-LAST:event_更新ActionPerformed
 
     private void 開始ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_開始ActionPerformed
         // TODO add your handling code here:
         if (ap.i == true) {
-            chatLog.setText("人物資訊：已有名字！！");
+            a = "人物資訊：已有名字！！";
+            printfChatLog(a);
         } else {
             ap.setName();
         }
@@ -333,14 +314,14 @@ public class GameMS extends javax.swing.JFrame {
     }//GEN-LAST:event_chatLogAncestorAdded
 
     private void 選擇怪物ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_選擇怪物ActionPerformed
-        if(ap.i == true) {
+        if (ap.i == true) {
             try {
-            // TODO add your handling code here:
-            gm.AtkMonster();
-        } catch (InterruptedException ex) {
-            Logger.getLogger(GameMS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        }else{
+                // TODO add your handling code here:
+                gm.AtkMonster();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(GameMS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            }
+        } else {
             chatLog.setText("請點選*人物資訊 - 開始遊戲*");
         }
         Updata();
@@ -362,25 +343,6 @@ public class GameMS extends javax.swing.JFrame {
         gm.GiveChoose();
     }//GEN-LAST:event_同行奇遇ActionPerformed
 
-    public void loveupdate() {
-        StringBuilder value = new StringBuilder();
-        for (int i = 0; i < GameVar.NpcLoves.length; i++) {
-            value.append("\n " + GameVar.NpcName[i] + "\t" + GameVar.NpcLevelName[GameVar.NpcLevel[i]] + "\t" + GameVar.NpcLoves[i]);
-        }
-        夥伴好感度.setText("姓名\t稱號\t好感度" + value.toString());
-    }
-    
-    public void Updata() {
-        Name.setText("姓名 : " + GameVar.PlayerName);
-        Level.setText("等級 : " + GameVar.ChrLevel);
-        exp.setText("經驗 : " + GameVar.ChrExp);
-        稱號.setText("稱號 : " + GameVar.str);
-    }
-    
-    void xx() {
-        夥伴好感度.setEnabled(false);
-    }
-
     /**
      * @param args the command line arguments
      */
@@ -388,7 +350,7 @@ public class GameMS extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -412,24 +374,51 @@ public class GameMS extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new GameMS().setVisible(true);
+                xx();
             }
         });
+    }
+
+    //訊息廣播
+    void printfChatLog(String str) {
+        chatLog.setText(chatLog.getText() + str + "\r\n");
+    }
+
+    //
+    public void loveupdate() {
+        StringBuilder value = new StringBuilder();
+        for (int i = 0; i < GameVar.NpcLoves.length; i++) {
+            value.append("\n " + GameVar.NpcName[i] + "\t" + GameVar.NpcLevelName[GameVar.NpcLevel[i]] + "\t" + GameVar.NpcLoves[i]);
+        }
+        夥伴好感度.setText("姓名\t稱號\t好感度" + value.toString());
+    }
+
+    //隨時更新資訊
+    public void Updata() {
+        Name.setText("姓名 : " + GameVar.PlayerName);
+        Level.setText("等級 : " + GameVar.ChrLevel);
+        exp.setText("經驗 : " + GameVar.ChrExp);
+        稱號.setText("稱號 : " + GameVar.str);
+    }
+
+    //鎖定文字視窗
+    static void xx() {
+        夥伴好感度.setEnabled(false);
+        chatLog.setEnabled(false);
     }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Level;
     private javax.swing.JLabel Name;
-    public javax.swing.JTextPane chatLog;
+    public static javax.swing.JTextPane chatLog;
     private javax.swing.JLabel exp;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane outText;
     private javax.swing.JTabbedPane 主畫面;
     private javax.swing.JPanel 人物資訊;
     private javax.swing.JButton 同行奇遇;
-    public javax.swing.JTextArea 夥伴好感度;
+    public static javax.swing.JTextArea 夥伴好感度;
     private javax.swing.JPanel 夥伴資訊;
     private javax.swing.JPanel 打怪修煉;
     private javax.swing.JButton 更新;

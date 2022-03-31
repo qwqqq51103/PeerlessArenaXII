@@ -56,7 +56,7 @@
             <EventHandler event="ancestorAdded" listener="javax.swing.event.AncestorListener" parameters="javax.swing.event.AncestorEvent" handler="chatLogAncestorAdded"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
           </AuxValues>
         </Component>
       </SubComponents>
@@ -124,22 +124,22 @@
           <SubComponents>
             <Component class="javax.swing.JLabel" name="Name">
               <Properties>
-                <Property name="text" type="java.lang.String" value="&#x59d3;&#x540d;"/>
+                <Property name="text" type="java.lang.String" value="&#x59d3;&#x540d; :"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="exp">
               <Properties>
-                <Property name="text" type="java.lang.String" value="&#x7d93;&#x9a57;"/>
+                <Property name="text" type="java.lang.String" value="&#x7d93;&#x9a57; :"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="Level">
               <Properties>
-                <Property name="text" type="java.lang.String" value="&#x7b49;&#x7d1a;"/>
+                <Property name="text" type="java.lang.String" value="&#x7b49;&#x7d1a; :"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="&#x7a31;&#x865f;">
               <Properties>
-                <Property name="text" type="java.lang.String" value="&#x7a31;&#x865f;"/>
+                <Property name="text" type="java.lang.String" value="&#x7a31;&#x865f; :"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="&#x66f4;&#x65b0;">
@@ -247,7 +247,7 @@
                     <EventHandler event="ancestorAdded" listener="javax.swing.event.AncestorListener" parameters="javax.swing.event.AncestorEvent" handler="&#x5925;&#x4f34;&#x597d;&#x611f;&#x5ea6;AncestorAdded"/>
                   </Events>
                   <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
                   </AuxValues>
                 </Component>
               </SubComponents>
@@ -275,28 +275,16 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="462" max="32767" attributes="0"/>
+                      <EmptySpace pref="478" max="32767" attributes="0"/>
                       <Component id="選擇怪物" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="103" max="32767" attributes="0"/>
+                      <EmptySpace pref="215" max="32767" attributes="0"/>
                       <Component id="選擇怪物" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -314,16 +302,6 @@
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="GameMS_&#x9078;&#x64c7;&#x602a;&#x7269;"/>
               </AuxValues>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel1">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jLabel1"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel2">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jLabel2"/>
-              </Properties>
             </Component>
           </SubComponents>
         </Container>

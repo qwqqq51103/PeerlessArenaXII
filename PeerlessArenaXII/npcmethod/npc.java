@@ -45,11 +45,11 @@ public class npc {
 
 //        System.out.println("姓名\t稱號\t好感度");
         String value = "所有NPC的好感度列表 \n";
-        for (int i = 0; i < var.NpcLoves.length; i++) {
-//            System.out.println(var.NpcName[i] + "\t" + var.NpcLevelName[var.NpcLevel[i]] + "\t" + var.NpcLoves[i]);
-            value += String.format("%s  %s  %d\n", var.NpcName[i], var.NpcLevelName[var.NpcLevel[i]], var.NpcLoves[i]);
-        }
-        JOptionPane.showMessageDialog(null, value, "絕代江湖", JOptionPane.PLAIN_MESSAGE);
+//        for (int i = 0; i < var.NpcLoves.length; i++) {
+////            System.out.println(var.NpcName[i] + "\t" + var.NpcLevelName[var.NpcLevel[i]] + "\t" + var.NpcLoves[i]);
+//            value += String.format("%s  %s  %d\n", var.NpcName[i], var.NpcLevelName[var.NpcLevel[i]], var.NpcLoves[i]);
+//        }
+//        JOptionPane.showMessageDialog(null, value, "絕代江湖", JOptionPane.PLAIN_MESSAGE);
     }
 
     //選擇你的夥伴
@@ -74,6 +74,7 @@ public class npc {
 //        System.out.println("");
         String s3 = ("恭喜大俠選擇成功以後  " + var.NpcName[var.choose - 1] + "  就是你的江湖好夥伴");
         JOptionPane.showMessageDialog(null, s3, "絕代江湖", JOptionPane.PLAIN_MESSAGE);
+        var.isOneChoose = false;
     }
 
     //新增夥伴

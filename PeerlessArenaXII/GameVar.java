@@ -52,4 +52,6 @@ public class GameVar {
     public static int x = 0;
     //強轉
     public static String z;
+    //選擇夥伴只能1次
+    public static boolean isOneChoose = true;
 }
