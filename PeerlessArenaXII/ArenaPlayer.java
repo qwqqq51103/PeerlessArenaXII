@@ -9,6 +9,7 @@ import java.util.Scanner;
 import java.util.*;
 import javax.swing.JOptionPane;
 import PeerlessArenaXII.GameMed.GameContent;
+import PeerlessArenaXII.ChrDiathesisVar;
 
 /**
  *
@@ -18,6 +19,7 @@ public class ArenaPlayer {
 
     GameVar var = new GameVar();
     GameContent gc = new GameContent();
+    ChrDiathesisVar cdv = new ChrDiathesisVar();
     public static boolean i = false;
 
     //設定名字 
@@ -40,6 +42,38 @@ public class ArenaPlayer {
             JOptionPane.showMessageDialog(null, "歡迎 : " + var.PlayerName + " 大俠 - 來到絕代江湖世界。", "絕代江湖", JOptionPane.PLAIN_MESSAGE);
             //取名結束
             i = true;
+        }
+    }
+
+    public void diathesis() {
+        int num = (int) (Math.random() * 11 - 1);
+        switch (var.choose - 1) {
+            case 0:
+                cdv.STR += num * 2;
+                cdv.AGI += num;
+                break;
+            case 1:
+                cdv.INT += num * 2;
+                cdv.LUK += num;
+                break;
+            case 2:
+                cdv.AGI += num * 2;
+                cdv.STR += num;
+                break;
+            case 3:
+                cdv.STR += num;
+                cdv.AGI += num;
+                cdv.INT += num;
+                cdv.LUK += num;
+                break;
+            case 4:
+                cdv.STR += num;
+                cdv.AGI += num;
+                cdv.INT += num * 2;
+                cdv.LUK += num * 2;
+                break;
+            default:
+                break;
         }
     }
 }

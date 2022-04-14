@@ -5,6 +5,7 @@
  */
 package PeerlessArenaXII.npcmethod;
 
+import PeerlessArenaXII.ChrDiathesisVar;
 import PeerlessArenaXII.GameMed.GameContent;
 import PeerlessArenaXII.GameVar;
 import static PeerlessArenaXII.GameVar.x;
@@ -73,6 +74,7 @@ public class exp {
                     //往前覆值
                 }
                 var.exp = arr;
+                ChrDiathesisVar.diathesis += 3;
             }
         }
     }
