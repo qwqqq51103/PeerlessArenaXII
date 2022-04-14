@@ -47,6 +47,7 @@ public class ArenaPlayer {
         }
     }
 
+    //NPC素質+到玩家身上
     public void diathesis(int z) {
         int num = (int) (Math.random() * 11 - 1);
         switch (z) {
@@ -90,6 +91,7 @@ public class ArenaPlayer {
         }
     }
 
+    //消耗能力值
     public void addDiathesis(int diath) {
         if (diath > 0) {
             cdv.diathesis--;
