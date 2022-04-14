@@ -10,6 +10,7 @@ import java.util.*;
 import javax.swing.JOptionPane;
 import PeerlessArenaXII.GameMed.GameContent;
 import PeerlessArenaXII.ChrDiathesisVar;
+import static PeerlessArenaXII.gui.GameMS.printfChatLog;
 
 /**
  *
@@ -20,6 +21,7 @@ public class ArenaPlayer {
     GameVar var = new GameVar();
     GameContent gc = new GameContent();
     ChrDiathesisVar cdv = new ChrDiathesisVar();
+    String a;
     public static boolean i = false;
 
     //設定名字 
@@ -45,35 +47,55 @@ public class ArenaPlayer {
         }
     }
 
-    public void diathesis() {
+    public void diathesis(int z) {
         int num = (int) (Math.random() * 11 - 1);
-        switch (var.choose - 1) {
+        switch (z) {
+            //江
             case 0:
                 cdv.STR += num * 2;
                 cdv.AGI += num;
+                System.out.println("0");
                 break;
             case 1:
+                //花
                 cdv.INT += num * 2;
                 cdv.LUK += num;
+                System.out.println("1");
                 break;
             case 2:
+                //鐵
                 cdv.AGI += num * 2;
                 cdv.STR += num;
+                System.out.println("2");
                 break;
             case 3:
+                //燕
                 cdv.STR += num;
                 cdv.AGI += num;
                 cdv.INT += num;
                 cdv.LUK += num;
+                System.out.println("3");
                 break;
             case 4:
+                //蘇
                 cdv.STR += num;
                 cdv.AGI += num;
                 cdv.INT += num * 2;
                 cdv.LUK += num * 2;
+                System.out.println("4");
                 break;
             default:
+                System.out.println("6666");
                 break;
+        }
+    }
+
+    public void addDiathesis(int diath) {
+        if (diath > 0) {
+            cdv.diathesis--;
+        } else {
+            a = "沒有足夠的能力點";
+            printfChatLog(a);
         }
     }
 }
