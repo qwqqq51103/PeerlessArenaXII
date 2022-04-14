@@ -12,6 +12,7 @@ import static PeerlessArenaXII.gui.GameMS.printfChatLog;
 import java.util.Scanner;
 import java.util.*;
 import javax.swing.JOptionPane;
+import PeerlessArenaXII.ArenaPlayer;
 
 /**
  *
@@ -21,6 +22,7 @@ public class npc {
     
     GameVar var = new GameVar();
     GameContent gc = new GameContent();
+    ArenaPlayer ap = new ArenaPlayer();
 
     //設定NPC的好感度
     public void setLoves() {
@@ -75,6 +77,7 @@ public class npc {
 //        System.out.println("");
         String s3 = ("恭喜大俠選擇成功以後  " + var.NpcName[var.choose - 1] + "  就是你的江湖好夥伴");
         JOptionPane.showMessageDialog(null, s3, "絕代江湖", JOptionPane.PLAIN_MESSAGE);
+        ap.diathesis();
         var.isOneChoose = false;
     }
 

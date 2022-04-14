@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 import PeerlessArenaXII.npcmethod.npc;
 import java.util.logging.Logger;
 import PeerlessArenaXII.GameMed.Gamemethod;
+import PeerlessArenaXII.ChrDiathesisVar;
 
 /**
  *
@@ -26,6 +27,7 @@ public class GameMS extends javax.swing.JFrame {
     monster mob = new monster();
     Gamemethod gm = new Gamemethod();
     GameVar gv = new GameVar();
+    ChrDiathesisVar cdv = new ChrDiathesisVar();
     String a;
 
     /**
@@ -54,6 +56,10 @@ public class GameMS extends javax.swing.JFrame {
         稱號 = new javax.swing.JLabel();
         更新 = new javax.swing.JButton();
         開始 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         夥伴資訊 = new javax.swing.JPanel();
         顯示夥伴 = new javax.swing.JLabel();
         選擇夥伴 = new javax.swing.JButton();
@@ -67,12 +73,12 @@ public class GameMS extends javax.swing.JFrame {
         setTitle("你好！我是來打雜的");
 
         chatLog.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 chatLogAncestorAdded(evt);
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
         });
         outText.setViewportView(chatLog);
@@ -99,6 +105,14 @@ public class GameMS extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("jLabel1");
+
+        jLabel2.setText("jLabel2");
+
+        jLabel3.setText("jLabel3");
+
+        jLabel4.setText("jLabel4");
+
         javax.swing.GroupLayout 人物資訊Layout = new javax.swing.GroupLayout(人物資訊);
         人物資訊.setLayout(人物資訊Layout);
         人物資訊Layout.setHorizontalGroup(
@@ -106,20 +120,28 @@ public class GameMS extends javax.swing.JFrame {
             .addGroup(人物資訊Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(人物資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(人物資訊Layout.createSequentialGroup()
-                        .addComponent(Name, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Level, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(exp, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(稱號, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 42, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, 人物資訊Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(開始)
                         .addGap(18, 18, 18)
-                        .addComponent(更新)))
+                        .addComponent(更新))
+                    .addGroup(人物資訊Layout.createSequentialGroup()
+                        .addGroup(人物資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Name, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(人物資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Level, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(人物資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(exp, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(人物資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(稱號, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 63, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         人物資訊Layout.setVerticalGroup(
@@ -131,7 +153,13 @@ public class GameMS extends javax.swing.JFrame {
                     .addComponent(exp, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Level, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(稱號, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 165, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
+                .addGroup(人物資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4))
+                .addGap(65, 65, 65)
                 .addGroup(人物資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(更新)
                     .addComponent(開始))
@@ -141,23 +169,23 @@ public class GameMS extends javax.swing.JFrame {
         主畫面.addTab("人物資訊", 人物資訊);
 
         夥伴資訊.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 夥伴資訊AncestorAdded(evt);
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
         });
 
         顯示夥伴.setText("尚未選擇夥伴");
         顯示夥伴.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 顯示夥伴AncestorAdded(evt);
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
         });
 
@@ -171,12 +199,12 @@ public class GameMS extends javax.swing.JFrame {
         夥伴好感度.setColumns(20);
         夥伴好感度.setRows(5);
         夥伴好感度.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 夥伴好感度AncestorAdded(evt);
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
         });
         jScrollPane1.setViewportView(夥伴好感度);
@@ -400,6 +428,10 @@ public class GameMS extends javax.swing.JFrame {
         Level.setText("等級 : " + GameVar.ChrLevel);
         exp.setText("經驗 : " + GameVar.ChrExp);
         稱號.setText("稱號 : " + GameVar.str);
+        jLabel1.setText("STR : " + cdv.STR);
+        jLabel2.setText("AGI : " + cdv.AGI);
+        jLabel3.setText("INT : " + cdv.INT);
+        jLabel4.setText("LUK : " + cdv.LUK);
         loveupdate();
     }
 
@@ -415,6 +447,10 @@ public class GameMS extends javax.swing.JFrame {
     private javax.swing.JLabel Name;
     public static javax.swing.JTextPane chatLog;
     private javax.swing.JLabel exp;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane outText;
     private javax.swing.JTabbedPane 主畫面;
