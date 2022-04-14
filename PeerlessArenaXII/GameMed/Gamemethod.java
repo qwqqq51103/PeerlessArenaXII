@@ -38,7 +38,7 @@ public class Gamemethod {
     //選擇夥伴功能
     public void GiveChoose() {
         String m;
-        System.out.println("要幹嘛?\n1.聊天談心\n2.交換夥伴\n3.退出");
+        //System.out.println("要幹嘛?\n1.聊天談心\n2.交換夥伴\n3.退出");
         String str = "你要做什麼?\n";
         str += "1.聊天談心\n";
         str += "2.交換夥伴\n";

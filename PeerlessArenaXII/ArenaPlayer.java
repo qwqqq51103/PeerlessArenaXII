@@ -22,7 +22,10 @@ public class ArenaPlayer {
     GameContent gc = new GameContent();
     ChrDiathesisVar cdv = new ChrDiathesisVar();
     String a;
+    //名字
     public static boolean i = false;
+    //素質
+    public static boolean z = true;
 
     //設定名字 
     public void setName() {
@@ -96,6 +99,7 @@ public class ArenaPlayer {
         if (diath > 0) {
             cdv.diathesis--;
         } else {
+            z = false;
             a = "沒有足夠的能力點";
             printfChatLog(a);
         }

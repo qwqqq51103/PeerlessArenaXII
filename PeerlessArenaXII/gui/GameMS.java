@@ -422,28 +422,36 @@ public class GameMS extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         ap.addDiathesis(cdv.diathesis);
-        cdv.STR++;
+        if (ap.z) {
+            cdv.STR++;
+        }
         Updata();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         ap.addDiathesis(cdv.diathesis);
-        cdv.AGI++;
+        if (ap.z) {
+            cdv.AGI++;
+        }
         Updata();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         ap.addDiathesis(cdv.diathesis);
-        cdv.INT++;
+        if (ap.z) {
+            cdv.INT++;
+        }
         Updata();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         ap.addDiathesis(cdv.diathesis);
-        cdv.LUK++;
+        if (ap.z) {
+            cdv.LUK++;
+        }
         Updata();
     }//GEN-LAST:event_jButton4ActionPerformed
 
