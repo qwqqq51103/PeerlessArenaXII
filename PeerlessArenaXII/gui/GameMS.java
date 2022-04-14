@@ -290,7 +290,7 @@ public class GameMS extends javax.swing.JFrame {
             a = "夥伴資訊：不可更換夥伴！";
             printfChatLog(a);
         }
-        loveupdate();
+        Updata();
     }//GEN-LAST:event_選擇夥伴ActionPerformed
 
     private void 更新ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_更新ActionPerformed
@@ -307,6 +307,7 @@ public class GameMS extends javax.swing.JFrame {
             ap.setName();
         }
         Name.setText("姓名 : " + GameVar.PlayerName);
+        Updata();
     }//GEN-LAST:event_開始ActionPerformed
 
     private void chatLogAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_chatLogAncestorAdded
@@ -334,13 +335,13 @@ public class GameMS extends javax.swing.JFrame {
             value.append("\n " + GameVar.NpcName[i] + "\t" + GameVar.NpcLevelName[GameVar.NpcLevel[i]] + "\t" + GameVar.NpcLoves[i]);
         }
         夥伴好感度.setText("姓名\t稱號\t好感度" + value.toString());
-        xx();
         Updata();
     }//GEN-LAST:event_夥伴好感度AncestorAdded
 
     private void 同行奇遇ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_同行奇遇ActionPerformed
         // TODO add your handling code here:
         gm.GiveChoose();
+        Updata();
     }//GEN-LAST:event_同行奇遇ActionPerformed
 
     /**
@@ -380,7 +381,7 @@ public class GameMS extends javax.swing.JFrame {
     }
 
     //訊息廣播
-    void printfChatLog(String str) {
+    public static void printfChatLog(String str) {
         chatLog.setText(chatLog.getText() + str + "\r\n");
     }
 
@@ -399,6 +400,7 @@ public class GameMS extends javax.swing.JFrame {
         Level.setText("等級 : " + GameVar.ChrLevel);
         exp.setText("經驗 : " + GameVar.ChrExp);
         稱號.setText("稱號 : " + GameVar.str);
+        loveupdate();
     }
 
     //鎖定文字視窗
