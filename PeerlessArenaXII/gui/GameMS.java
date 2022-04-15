@@ -73,6 +73,7 @@ public class GameMS extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("你好！我是來打雜的");
+        setBackground(new java.awt.Color(204, 255, 255));
 
         chatLog.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
@@ -206,7 +207,7 @@ public class GameMS extends javax.swing.JFrame {
                     .addComponent(jButton3))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                 .addGroup(人物資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(更新)
                     .addComponent(開始))
@@ -291,7 +292,7 @@ public class GameMS extends javax.swing.JFrame {
                 .addGap(31, 31, 31))
             .addGroup(夥伴資訊Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -316,7 +317,7 @@ public class GameMS extends javax.swing.JFrame {
         打怪修煉Layout.setVerticalGroup(
             打怪修煉Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, 打怪修煉Layout.createSequentialGroup()
-                .addContainerGap(223, Short.MAX_VALUE)
+                .addContainerGap(224, Short.MAX_VALUE)
                 .addComponent(選擇怪物)
                 .addContainerGap())
         );
@@ -390,7 +391,7 @@ public class GameMS extends javax.swing.JFrame {
     }//GEN-LAST:event_chatLogAncestorAdded
 
     private void 選擇怪物ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_選擇怪物ActionPerformed
-        if (ap.i == true) {
+        if (ap.i == true && gv.isOneChoose == false) {
             try {
                 // TODO add your handling code here:
                 gm.AtkMonster();
@@ -398,7 +399,8 @@ public class GameMS extends javax.swing.JFrame {
                 Logger.getLogger(GameMS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
             }
         } else {
-            chatLog.setText("請點選*人物資訊 - 開始遊戲*");
+            chatLog.setText("請確認是否有創建角色與夥伴！");
+            return;
         }
         Updata();
     }//GEN-LAST:event_選擇怪物ActionPerformed

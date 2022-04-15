@@ -29,20 +29,23 @@ public class monster {
 //            System.out.println((i + 1) + "." + var.mobname[i]);
 //        }
         var.z = (String) JOptionPane.showInputDialog(null, "", "絕代江湖", JOptionPane.PLAIN_MESSAGE, null, var.mobname, 1);
+        if(var.z == null) {
+            return;
+        }
         char x = var.z.charAt(0);
 //        System.out.println("");
         JOptionPane.showMessageDialog(null, "目前帶著\t" + var.NpcName[var.choose - 1] + " 夥伴", "絕代江湖", JOptionPane.PLAIN_MESSAGE);
 //        System.out.println("目前帶著\t" + var.NpcName[var.choose - 1] + " 夥伴");
     }
-
     //打怪修練(修練三場)
+
     public void atkmonster() throws InterruptedException {
         //修練三次
         int count = 3;
 //        System.out.println("您目前選擇的是 " + var.mobname[gc.mobnums - 1] + " 怪物");
         JOptionPane.showMessageDialog(null, "您目前選擇的是 " + var.mobname[gc.mobnums - 1] + " 怪物", "絕代江湖", JOptionPane.PLAIN_MESSAGE);
         for (int i = 0; i < count; i++) {
-            System.out.println("您修練" + (i + 1) + "次");
+            //System.out.println("您修練" + (i + 1) + "次");
             //用法 修練 停止三秒
             Thread.sleep(1 * 3);
         }
@@ -60,7 +63,7 @@ public class monster {
             if (var.bossCount == 1) {
 //                System.out.println("此次【BOSS】修煉已完成，" + var.NpcName[var.choose - 1] + "獲得" + total + "經驗");
 //                System.out.println("因第一次BOSS修練故無BOSS加倍！");
-                JOptionPane.showMessageDialog(null, "此次【BOSS】修煉已完成，" + var.NpcName[var.choose - 1] + "獲得" + total + "經驗\n因第一次BOSS修練故無BOSS加倍！" , "絕代江湖", JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showMessageDialog(null, "此次【BOSS】修煉已完成，" + var.NpcName[var.choose - 1] + "獲得" + total + "經驗\n因第一次BOSS修練故無BOSS加倍！", "絕代江湖", JOptionPane.PLAIN_MESSAGE);
             } else if (var.bossCount != 1) {
 //                System.out.println("此次【BOSS】修煉已完成，" + var.NpcName[var.choose - 1] + "獲得" + total + "經驗");
                 JOptionPane.showMessageDialog(null, "此次【BOSS】修煉已完成，" + var.NpcName[var.choose - 1] + "獲得" + total + "經驗", "絕代江湖", JOptionPane.PLAIN_MESSAGE);

@@ -12,8 +12,8 @@ import PeerlessArenaXII.ArenaPlayer;
 import PeerlessArenaXII.GameVar;
 import javax.swing.JOptionPane;
 
-
-/**1
+/**
+ * 1
  *
  * @author Joe
  */
@@ -57,9 +57,12 @@ public class Gamemethod {
     //怪物功能
     public void AtkMonster() throws InterruptedException {
 //        System.out.println(" " + var.PlayerName + " 要選擇哪隻怪物做修練呢?");
-        JOptionPane.showMessageDialog(null, var.PlayerName + " 要選擇哪隻怪物做修練呢?\n", "", JOptionPane.PLAIN_MESSAGE);
+        //JOptionPane.showMessageDialog(null, var.PlayerName + " 要選擇哪隻怪物做修練呢?\n", "", JOptionPane.PLAIN_MESSAGE);
         monster.monster();
 //        gc.mobnums = new Scanner(System.in).nextInt();
+        if (var.z == null) {
+            return;
+        }
         char x = var.z.charAt(0);
 //        gc.mobnums = Integer.parseInt(x);
 //        int vaule = Character.getNumericValue（x）
