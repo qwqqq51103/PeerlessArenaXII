@@ -104,4 +104,6 @@ public class ArenaPlayer {
             printfChatLog(a);
         }
     }
+    
+    //傷害計算
 }

@@ -32,6 +32,12 @@ public class GameVar {
     public static int talk = 0;
     //怪物名稱
     public static String[] mobname = {"1.泡沫海馬", "2.咖切龍蝦", "3.竹筒木馬", "4.少林小木憎", "5.夏日蓮蓬頭", "6.霸王阿修羅", "7.真單親媽媽"};
+    public static String[] mobnameXnum = {"泡沫海馬", "咖切龍蝦", "竹筒木馬", "少林小木憎", "夏日蓮蓬頭", "霸王阿修羅", "真單親媽媽"};
+    public static int[] mobLV = {1,2,3,4,5,6,7};
+    public static int[] mobHP = {50,100,150,200,250,500,1250};
+    public static int[] mobSTRMIN = {1,5,6,11,17,35,101};
+    public static int[] mobSTRMAX = {5,12,15,22,47,66,147};
+    public static int[] mobDEF = {3,11,7,30,33,10,177};
     //exp階級
     public static int[] exp = {10, 50, 100, 150, 250, 400, 650, 1050, 1700, 2750};
     //等級稱號

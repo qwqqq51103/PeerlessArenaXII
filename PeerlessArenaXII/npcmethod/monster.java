@@ -42,13 +42,17 @@ public class monster {
     public void atkmonster() throws InterruptedException {
         //修練三次
         int count = 3;
+        //回合
+        int ron = 10;
 //        System.out.println("您目前選擇的是 " + var.mobname[gc.mobnums - 1] + " 怪物");
         JOptionPane.showMessageDialog(null, "您目前選擇的是 " + var.mobname[gc.mobnums - 1] + " 怪物", "絕代江湖", JOptionPane.PLAIN_MESSAGE);
-        for (int i = 0; i < count; i++) {
-            //System.out.println("您修練" + (i + 1) + "次");
-            //用法 修練 停止三秒
-            Thread.sleep(1 * 3);
+        for(int i = 0; i <= ron; i++) {
+            
         }
+//        for (int i = 0; i < count; i++) {
+//            //用法 修練 停止三秒
+//            Thread.sleep(1 * 3);
+//        }
         var.atkcount += count;
         //結算
         exp.close();

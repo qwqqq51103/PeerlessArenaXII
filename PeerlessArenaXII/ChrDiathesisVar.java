@@ -18,5 +18,7 @@ public class ChrDiathesisVar {
     public static int INT = preset;
     public static int AGI = preset;
     public static int LUK = preset;
+    public static float HP = STR * 1.3f + INT * 1.1f + AGI;
+    public static float DEF = AGI * 1.7f + LUK * 2.2f + INT;
 
 }
