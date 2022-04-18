@@ -10,6 +10,10 @@ import java.util.*;
 import javax.swing.JOptionPane;
 import PeerlessArenaXII.GameMed.GameContent;
 import PeerlessArenaXII.ChrDiathesisVar;
+import static PeerlessArenaXII.ChrDiathesisVar.AGI;
+import static PeerlessArenaXII.ChrDiathesisVar.INT;
+import static PeerlessArenaXII.ChrDiathesisVar.LUK;
+import static PeerlessArenaXII.ChrDiathesisVar.STR;
 import static PeerlessArenaXII.gui.GameMS.printfChatLog;
 
 /**
@@ -22,6 +26,7 @@ public class ArenaPlayer {
     GameContent gc = new GameContent();
     ChrDiathesisVar cdv = new ChrDiathesisVar();
     String a;
+    String b;
     //名字
     public static boolean i = false;
     //素質
@@ -104,6 +109,33 @@ public class ArenaPlayer {
             printfChatLog(a);
         }
     }
-    
+
+    //計算固定能力值
+    public void setDiathesis() {
+        cdv.HP = (STR * 2) + (INT * 1 + 2) + AGI;
+        cdv.DEF = (AGI * 2 + 2 + LUK * 2) + 1 + INT;
+    }
+
     //傷害計算
+    public void RonDamg(int lv, int hp, int strMax, int strMin, int def) {
+        //最後傷害
+        int damge = 0;
+        //計算固定能力值
+        setDiathesis();
+        int toStr = strMax - strMin;
+        int[] eq = new int[toStr + 1];
+        for (int i = 0; i <= toStr; i++) {
+            //外層做ep陣列的index
+            for (int j = strMin; j <= strMax; j++) {
+                //內層做怪物傷害的浮動值
+                eq[i] = j;
+                a = "num" + eq[i] + "d = " + j;
+            }
+            strMax--;
+        }
+        int num = (int)(Math.random() * toStr);
+        damge = eq[num];
+        b = "damge : " + damge;
+        printfChatLog(a + " ----- " + b);
+    }
 }
