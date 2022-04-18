@@ -32,6 +32,7 @@ public class GameMethod {
 //            System.out.println("你的小夥伴已滿");
             JOptionPane.showMessageDialog(null, "你的小夥伴已滿", "絕代江湖", JOptionPane.PLAIN_MESSAGE);
         }
+        System.out.println("");
         npc.setNewPartner();
     }
 
