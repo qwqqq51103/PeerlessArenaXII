@@ -112,16 +112,18 @@ public class ArenaPlayer {
 
     //計算固定能力值
     public void setDiathesis() {
-        cdv.HP = (STR * 2) + (INT * 1 + 2) + AGI;
-        cdv.DEF = (AGI * 2 + 2 + LUK * 2) + 1 + INT;
+        if (cdv.diathesis > 0 && i  == true || cdv.HPDAM < 0) {
+            cdv.HP = (STR * 2) + (INT * 1 + 2) + AGI;
+            cdv.DEF = (AGI * 2 + 2 + LUK * 2) + 1 + INT;
+        }
     }
 
-    //傷害計算
+    //怪物隨機範圍值浮動傷害
     public void RonDamg(int lv, int hp, int strMax, int strMin, int def) {
         //最後傷害
         int damge = 0;
         //計算固定能力值
-        setDiathesis();
+        //setDiathesis();
         int toStr = strMax - strMin;
         int[] eq = new int[toStr + 1];
         for (int i = 0; i <= toStr; i++) {
@@ -133,9 +135,16 @@ public class ArenaPlayer {
             }
             strMax--;
         }
-        int num = (int)(Math.random() * toStr);
+        int num = (int) (Math.random() * toStr);
         damge = eq[num];
         b = "damge : " + damge;
         printfChatLog(a + " ----- " + b);
+        playDamg(damge, cdv.DEF, cdv.HP);
+    }
+
+    public void playDamg(int da, int def, int hp) {
+        hp = def - da;
+        cdv.HPDAM = cdv.HP - hp;
+        cdv.HP = cdv.HPDAM;
     }
 }

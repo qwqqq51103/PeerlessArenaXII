@@ -406,6 +406,7 @@ public class GameMS extends javax.swing.JFrame {
             printfChatLog(a);
         }
         Updata();
+        ap.setDiathesis();
     }//GEN-LAST:event_選擇夥伴ActionPerformed
 
     private void 更新ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_更新ActionPerformed
@@ -423,6 +424,7 @@ public class GameMS extends javax.swing.JFrame {
         }
         Name.setText("姓名 : " + GameVar.PlayerName);
         Updata();
+        ap.setDiathesis();
     }//GEN-LAST:event_開始ActionPerformed
 
     private void chatLogAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_chatLogAncestorAdded
@@ -468,6 +470,7 @@ public class GameMS extends javax.swing.JFrame {
             cdv.STR++;
         }
         Updata();
+        ap.setDiathesis();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -477,6 +480,7 @@ public class GameMS extends javax.swing.JFrame {
             cdv.AGI++;
         }
         Updata();
+        ap.setDiathesis();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -486,6 +490,7 @@ public class GameMS extends javax.swing.JFrame {
             cdv.INT++;
         }
         Updata();
+        ap.setDiathesis();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -495,6 +500,7 @@ public class GameMS extends javax.swing.JFrame {
             cdv.LUK++;
         }
         Updata();
+        ap.setDiathesis();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void 怪物AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_怪物AncestorAdded
@@ -568,7 +574,6 @@ public class GameMS extends javax.swing.JFrame {
         jLabel3.setText("INT : " + cdv.INT);
         jLabel4.setText("LUK : " + cdv.LUK);
         jLabel5.setText("剩餘能力點 : " + cdv.diathesis);
-        ap.setDiathesis();
         jLabel6.setText("HP : " + cdv.HP);
         jLabel7.setText("DEF : " + cdv.DEF);
         loveupdate();
