@@ -10,9 +10,10 @@ import PeerlessArenaXII.GameVar;
 import PeerlessArenaXII.npcmethod.monster;
 import PeerlessArenaXII.npcmethod.npc;
 import java.util.logging.Logger;
-import PeerlessArenaXII.GameMed.Gamemethod;
+import PeerlessArenaXII.GameMed.GameMethod;
 import PeerlessArenaXII.ChrDiathesisVar;
 import javax.swing.JTextArea;
+import PeerlessArenaXII.GameMed.GameContent;
 
 /**
  *
@@ -23,9 +24,10 @@ public class GameMS extends javax.swing.JFrame {
     npc npc = new npc();
     ArenaPlayer ap = new ArenaPlayer();
     monster mob = new monster();
-    Gamemethod gm = new Gamemethod();
+    GameMethod gm = new GameMethod();
     GameVar gv = new GameVar();
     ChrDiathesisVar cdv = new ChrDiathesisVar();
+    GameContent gc = new GameContent();
     String a;
 
     /**
@@ -440,6 +442,7 @@ public class GameMS extends javax.swing.JFrame {
             return;
         }
         Updata();
+        //ap.RonDamg(gv.mobLV[gc.mobnums - 1], gv.mobHP[gc.mobnums - 1], gv.mobSTRMAX[gc.mobnums - 1], gv.mobSTRMIN[gc.mobnums - 1], gv.mobDEF[gc.mobnums - 1]);
     }//GEN-LAST:event_選擇怪物ActionPerformed
 
     private void 夥伴好感度AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_夥伴好感度AncestorAdded
@@ -565,6 +568,7 @@ public class GameMS extends javax.swing.JFrame {
         jLabel3.setText("INT : " + cdv.INT);
         jLabel4.setText("LUK : " + cdv.LUK);
         jLabel5.setText("剩餘能力點 : " + cdv.diathesis);
+        ap.setDiathesis();
         jLabel6.setText("HP : " + cdv.HP);
         jLabel7.setText("DEF : " + cdv.DEF);
         loveupdate();

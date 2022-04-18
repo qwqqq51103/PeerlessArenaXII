@@ -25,7 +25,7 @@ public class GameContent {
 
     public void game() throws InterruptedException {
         GameVar var = new GameVar();
-        Gamemethod gm = new Gamemethod();
+        GameMethod gm = new GameMethod();
         while (gameday <= 100) {
 //            System.out.println();
 //            System.out.println("遊戲進行到第" + gameday + "天");

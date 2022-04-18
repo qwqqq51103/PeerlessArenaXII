@@ -47,7 +47,7 @@ public class GameVar {
     //角色經驗
     public static int ChrExp = 0; //綁EXP階級
     //角色等級
-    public static int ChrLevel;
+    public static int ChrLevel = 50;
     //夥伴經驗
     public static int paExp = 0;
     //打王資格

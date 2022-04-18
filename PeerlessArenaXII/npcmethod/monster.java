@@ -5,12 +5,14 @@
  */
 package PeerlessArenaXII.npcmethod;
 
+import PeerlessArenaXII.ArenaPlayer;
 import PeerlessArenaXII.GameMed.GameContent;
 import PeerlessArenaXII.GameVar;
 import static PeerlessArenaXII.GameVar.x;
 import java.util.Scanner;
 import java.util.*;
 import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -21,6 +23,7 @@ public class monster {
     GameVar var = new GameVar();
     GameContent gc = new GameContent();
     exp exp = new exp();
+    ArenaPlayer ap = new ArenaPlayer();
 
     //打怪修練(選擇怪物)
     public void monster() {
@@ -37,17 +40,18 @@ public class monster {
         JOptionPane.showMessageDialog(null, "目前帶著\t" + var.NpcName[var.choose - 1] + " 夥伴", "絕代江湖", JOptionPane.PLAIN_MESSAGE);
 //        System.out.println("目前帶著\t" + var.NpcName[var.choose - 1] + " 夥伴");
     }
+    
     //打怪修練(修練三場)
-
     public void atkmonster() throws InterruptedException {
         //修練三次
         int count = 3;
         //回合
-        int ron = 10;
+        int ron = 1;
 //        System.out.println("您目前選擇的是 " + var.mobname[gc.mobnums - 1] + " 怪物");
         JOptionPane.showMessageDialog(null, "您目前選擇的是 " + var.mobname[gc.mobnums - 1] + " 怪物", "絕代江湖", JOptionPane.PLAIN_MESSAGE);
-        for(int i = 0; i <= ron; i++) {
-            
+        for(int i = 0; i < ron; i++) {
+            //傷害計算
+            ap.RonDamg(var.mobLV[gc.mobnums - 1], var.mobHP[gc.mobnums - 1], var.mobSTRMAX[gc.mobnums - 1], var.mobSTRMIN[gc.mobnums - 1], var.mobDEF[gc.mobnums - 1]);
         }
 //        for (int i = 0; i < count; i++) {
 //            //用法 修練 停止三秒

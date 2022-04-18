@@ -11,14 +11,14 @@ package PeerlessArenaXII;
 public class ChrDiathesisVar {
 
     //素質
-    public static int diathesis = 0;
+    public static int diathesis = 9999;
     //
     final static int preset = 1;
     public static int STR = preset;
     public static int INT = preset;
     public static int AGI = preset;
     public static int LUK = preset;
-    public static float HP = STR * 1.3f + INT * 1.1f + AGI;
-    public static float DEF = AGI * 1.7f + LUK * 2.2f + INT;
+    public static int HP;
+    public static int DEF;
 
 }
