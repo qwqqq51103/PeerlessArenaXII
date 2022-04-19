@@ -15,6 +15,7 @@ import static PeerlessArenaXII.ChrDiathesisVar.INT;
 import static PeerlessArenaXII.ChrDiathesisVar.LUK;
 import static PeerlessArenaXII.ChrDiathesisVar.STR;
 import static PeerlessArenaXII.gui.GameMS.printfChatLog;
+import PeerlessArenaXII.gui.GameMS;
 
 /**
  *
@@ -30,7 +31,9 @@ public class ArenaPlayer {
     //名字
     public static boolean i = false;
     //素質
-    public static boolean z = true;
+    public boolean z = true;
+    //NPC+素質
+    public boolean x = true;
 
     //設定名字 
     public void setName() {
@@ -97,30 +100,48 @@ public class ArenaPlayer {
                 System.out.println("6666");
                 break;
         }
+        setDiathesis();
+        x = false;
     }
 
-    //消耗能力值
-    public void addDiathesis(int diath) {
-        if (diath > 0) {
+    //消耗能力值 &&  = and    || = or
+    public void addDiathesis(int diath, int str, int agi, int in, int luk) {
+        if (diath > 0 && z == true) {
             cdv.diathesis--;
+            cdv.STR = cdv.STR + str;
+            cdv.AGI = cdv.AGI + agi;
+            cdv.INT = cdv.INT + in;
+            cdv.LUK = cdv.LUK + luk;
+            setDiathesis(diath);
         } else {
-            z = false;
             a = "沒有足夠的能力點";
             printfChatLog(a);
         }
     }
 
-    //計算固定能力值
+    //計算固定能力值(overload)
+    public void setDiathesis(int cdvdiathesis) {
+        if (cdv.diathesis >= 0 && cdv.HPMIN == cdv.HPMAX) {
+            cdv.HPMAX = (STR * 2) + (INT * 1 + 2) + AGI;
+            cdv.HPMIN = cdv.HPMAX;
+            //cdv.DEF = (AGI * 2 + 2 + LUK * 2) + 1 + INT;
+        }
+        cdv.HPMAX = (STR * 2) + (INT * 1 + 2) + AGI;
+        cdv.HPMIN = cdv.HPMIN;
+    }
+
+    //(overload)NPC+素質
     public void setDiathesis() {
-        if (cdv.diathesis > 0 && i  == true || cdv.HPDAM < 0) {
-            cdv.HP = (STR * 2) + (INT * 1 + 2) + AGI;
-            cdv.DEF = (AGI * 2 + 2 + LUK * 2) + 1 + INT;
+        if (x == true) {
+            cdv.HPMAX = (STR * 2) + (INT * 1 + 2) + AGI;
+            cdv.HPMIN = cdv.HPMAX;
+            //cdv.DEF = (AGI * 2 + 2 + LUK * 2) + 1 + INT;
         }
     }
 
     //怪物隨機範圍值浮動傷害
     public void RonDamg(int lv, int hp, int strMax, int strMin, int def) {
-        //最後傷害
+        //怪物最後傷害
         int damge = 0;
         //計算固定能力值
         //setDiathesis();
@@ -139,12 +160,15 @@ public class ArenaPlayer {
         damge = eq[num];
         b = "damge : " + damge;
         printfChatLog(a + " ----- " + b);
-        playDamg(damge, cdv.DEF, cdv.HP);
+        playDamge(damge, cdv.DEF, cdv.HPMIN);
     }
 
-    public void playDamg(int da, int def, int hp) {
-        hp = def - da;
-        cdv.HPDAM = cdv.HP - hp;
-        cdv.HP = cdv.HPDAM;
+    //玩家受傷害
+    public void playDamge(int da, int def, int hp) {
+        int tmp = (def - da);
+        if (tmp > 0) {
+            cdv.HPMIN = hp;
+        }
+        cdv.HPMIN += (tmp);
     }
 }

@@ -399,19 +399,19 @@ public class GameMS extends javax.swing.JFrame {
 
         if (gv.isOneChoose) {
             npc.setChoosePartner();
+            CdvUpdata();
             npc.setLoves();
             顯示夥伴.setText("目前夥伴 : " + GameVar.NpcName[GameVar.choose - 1]);
         } else {
             a = "夥伴資訊：不可更換夥伴！";
             printfChatLog(a);
         }
-        Updata();
-        ap.setDiathesis();
     }//GEN-LAST:event_選擇夥伴ActionPerformed
 
     private void 更新ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_更新ActionPerformed
         // TODO add your handling code her
         Updata();
+        loveupdate();
     }//GEN-LAST:event_更新ActionPerformed
 
     private void 開始ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_開始ActionPerformed
@@ -424,7 +424,7 @@ public class GameMS extends javax.swing.JFrame {
         }
         Name.setText("姓名 : " + GameVar.PlayerName);
         Updata();
-        ap.setDiathesis();
+        CdvUpdata();
     }//GEN-LAST:event_開始ActionPerformed
 
     private void chatLogAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_chatLogAncestorAdded
@@ -436,6 +436,7 @@ public class GameMS extends javax.swing.JFrame {
             try {
                 // TODO add your handling code here:
                 gm.AtkMonster();
+                CdvUpdata();
             } catch (InterruptedException ex) {
                 Logger.getLogger(GameMS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
             }
@@ -465,42 +466,26 @@ public class GameMS extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        ap.addDiathesis(cdv.diathesis);
-        if (ap.z) {
-            cdv.STR++;
-        }
-        Updata();
-        ap.setDiathesis();
+        ap.addDiathesis(cdv.diathesis, 1, 0, 0, 0);
+        CdvUpdata();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        ap.addDiathesis(cdv.diathesis);
-        if (ap.z) {
-            cdv.AGI++;
-        }
-        Updata();
-        ap.setDiathesis();
+        ap.addDiathesis(cdv.diathesis, 0, 1, 0, 0);
+        CdvUpdata();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        ap.addDiathesis(cdv.diathesis);
-        if (ap.z) {
-            cdv.INT++;
-        }
-        Updata();
-        ap.setDiathesis();
+        ap.addDiathesis(cdv.diathesis, 0, 0, 1, 0);
+        CdvUpdata();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        ap.addDiathesis(cdv.diathesis);
-        if (ap.z) {
-            cdv.LUK++;
-        }
-        Updata();
-        ap.setDiathesis();
+        ap.addDiathesis(cdv.diathesis, 0, 0, 0, 1);
+        CdvUpdata();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void 怪物AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_怪物AncestorAdded
@@ -554,7 +539,7 @@ public class GameMS extends javax.swing.JFrame {
         chatLog.setText(chatLog.getText() + str + "\r\n");
     }
 
-    //
+    //好感度更新
     public void loveupdate() {
         StringBuilder value = new StringBuilder();
         for (int i = 0; i < GameVar.NpcLoves.length; i++) {
@@ -563,20 +548,23 @@ public class GameMS extends javax.swing.JFrame {
         夥伴好感度.setText("姓名\t稱號\t好感度" + value.toString());
     }
 
-    //隨時更新資訊
+    //人物更新資訊
     public void Updata() {
         Name.setText("姓名 : " + GameVar.PlayerName);
         Level.setText("等級 : " + GameVar.ChrLevel);
         exp.setText("經驗 : " + GameVar.ChrExp);
         稱號.setText("稱號 : " + GameVar.str);
+    }
+
+    //素質更新
+    public void CdvUpdata() {
         jLabel1.setText("STR : " + cdv.STR);
         jLabel2.setText("AGI : " + cdv.AGI);
         jLabel3.setText("INT : " + cdv.INT);
         jLabel4.setText("LUK : " + cdv.LUK);
         jLabel5.setText("剩餘能力點 : " + cdv.diathesis);
-        jLabel6.setText("HP : " + cdv.HP);
+        jLabel6.setText("HP : " + cdv.HPMAX + " / " + cdv.HPMIN);
         jLabel7.setText("DEF : " + cdv.DEF);
-        loveupdate();
     }
 
     //鎖定文字視窗
