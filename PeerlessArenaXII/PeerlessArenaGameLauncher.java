@@ -24,7 +24,7 @@ public class PeerlessArenaGameLauncher {
         ArenaPlayer t = new ArenaPlayer();
         GameContent g = new GameContent();
         GameVar gv = new GameVar();
-        JOptionPane.showMessageDialog(null, "歡迎來到絕代江湖", "絕代江湖", JOptionPane.PLAIN_MESSAGE);
+        //JOptionPane.showMessageDialog(null, "歡迎來到絕代江湖", "絕代江湖", JOptionPane.PLAIN_MESSAGE);
         npc npc = new npc();
         //設定名字
         t.setName();

@@ -21,6 +21,7 @@ public class ChrDiathesisVar {
     public static int HPMAX = 0;
     public static int HPMIN = HPMAX;
     public static int HPDAM;
-    public static int DEF = 0;
+    public static float DEF;
+    public static int def;
 
 }

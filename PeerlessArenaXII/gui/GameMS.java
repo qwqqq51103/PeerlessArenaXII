@@ -14,6 +14,10 @@ import PeerlessArenaXII.GameMed.GameMethod;
 import PeerlessArenaXII.ChrDiathesisVar;
 import javax.swing.JTextArea;
 import PeerlessArenaXII.GameMed.GameContent;
+import static java.awt.Color.*;
+import javafx.scene.paint.Color;
+import PeerlessArenaXII.GameMed.ColorOutput;
+import static javafx.scene.paint.Color.color;
 
 /**
  *
@@ -28,6 +32,8 @@ public class GameMS extends javax.swing.JFrame {
     GameVar gv = new GameVar();
     ChrDiathesisVar cdv = new ChrDiathesisVar();
     GameContent gc = new GameContent();
+    ColorOutput cp = new ColorOutput();
+    String str;
     String a;
 
     /**
@@ -83,6 +89,7 @@ public class GameMS extends javax.swing.JFrame {
         setBackground(new java.awt.Color(204, 255, 255));
 
         chatLog.setEditable(false);
+        chatLog.setForeground(new java.awt.Color(51, 255, 0));
         chatLog.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 chatLogAncestorAdded(evt);
@@ -455,7 +462,7 @@ public class GameMS extends javax.swing.JFrame {
             value.append("\n " + GameVar.NpcName[i] + "\t" + GameVar.NpcLevelName[GameVar.NpcLevel[i]] + "\t" + GameVar.NpcLoves[i]);
         }
         //夥伴好感度.setText("姓名\t稱號\t好感度" + value.toString());
-        Updata();
+        loveupdate();
     }//GEN-LAST:event_夥伴好感度AncestorAdded
 
     private void 同行奇遇ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_同行奇遇ActionPerformed
@@ -534,9 +541,11 @@ public class GameMS extends javax.swing.JFrame {
         });
     }
 
+    
     //訊息廣播
     public static void printfChatLog(String str) {
         chatLog.setText(chatLog.getText() + str + "\r\n");
+        chatLog.setForeground(java.awt.Color.GREEN);
     }
 
     //好感度更新
@@ -564,13 +573,13 @@ public class GameMS extends javax.swing.JFrame {
         jLabel4.setText("LUK : " + cdv.LUK);
         jLabel5.setText("剩餘能力點 : " + cdv.diathesis);
         jLabel6.setText("HP : " + cdv.HPMAX + " / " + cdv.HPMIN);
-        jLabel7.setText("DEF : " + cdv.DEF);
+        jLabel7.setText("DEF : " + cdv.DEF + " / " + cdv.def);
     }
 
     //鎖定文字視窗
     static void xx() {
         夥伴好感度.setEnabled(false);
-        chatLog.setEnabled(false);
+        //chatLog.setEnabled(false);
         怪物.setEnabled(false);
     }
 

@@ -14,24 +14,25 @@ import java.util.*;
 import javax.swing.JOptionPane;
 import PeerlessArenaXII.ArenaPlayer;
 import static PeerlessArenaXII.GameVar.choose;
+import javafx.scene.paint.Color;
 
 /**
  *
  * @author Joe
  */
 public class npc {
-    
+
     GameVar var = new GameVar();
     GameContent gc = new GameContent();
     ArenaPlayer ap = new ArenaPlayer();
 
     //設定NPC的好感度
     public void setLoves() {
-        
+
         for (int i = 0; i < var.NpcLoves.length; i++) {
             var.NpcLoves[i] = 100;
         }
-        
+
         switch (var.choose - 1) {
             default:
                 for (int i = 0; i < var.NpcName.length; i++) {

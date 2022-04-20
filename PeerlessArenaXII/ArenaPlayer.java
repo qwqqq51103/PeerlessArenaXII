@@ -16,6 +16,7 @@ import static PeerlessArenaXII.ChrDiathesisVar.LUK;
 import static PeerlessArenaXII.ChrDiathesisVar.STR;
 import static PeerlessArenaXII.gui.GameMS.printfChatLog;
 import PeerlessArenaXII.gui.GameMS;
+import PeerlessArenaXII.GameMed.ColorOutput;
 
 /**
  *
@@ -26,6 +27,7 @@ public class ArenaPlayer {
     GameVar var = new GameVar();
     GameContent gc = new GameContent();
     ChrDiathesisVar cdv = new ChrDiathesisVar();
+    ColorOutput cp = new ColorOutput();
     String a;
     String b;
     //名字
@@ -38,24 +40,32 @@ public class ArenaPlayer {
     //設定名字 
     public void setName() {
         if (i == false) {
-            do {
-                String[] s = {"初夏薄荷", "初夏", "薄荷"};
-                var.PlayerName = (String) JOptionPane.showInputDialog(null, "請選擇你的大名", "絕代江湖", JOptionPane.PLAIN_MESSAGE, null, s, 1);
+            //do {
+            String[] s = {"初夏薄荷", "初夏", "薄荷"};
+            var.PlayerName = (String) JOptionPane.showInputDialog(null, "請選擇你的大名", "絕代江湖", JOptionPane.PLAIN_MESSAGE, null, s, 1);
 //            System.out.print("請輸入您的大名 : ");
 //            var.PlayerName = new Scanner(System.in).next();
 //            System.out.println("");
-                String Name = var.str + "\n等級 : " + var.NpcLevel[0] + "\n稱號 : " + var.NpcLevelName[0] + "\n姓名 : " + var.PlayerName;
+            String Name = var.str + "\n等級 : " + var.NpcLevel[0] + "\n稱號 : " + var.NpcLevelName[0] + "\n姓名 : " + var.PlayerName;
 //            JOptionPane.showMessageDialog(null, Name, "絕代江湖", JOptionPane.PLAIN_MESSAGE);
 //            System.out.println(var.str + "\n等級 : " + var.NpcLevel[0] + "\n稱號 : " + var.NpcLevelName[0] + "\n姓名 : " + var.PlayerName);
 //            System.out.println("");
-                var.NameCheck = JOptionPane.showInputDialog(null, "確定這組名字(Y/N)?\n\n" + Name, "絕代江湖", JOptionPane.PLAIN_MESSAGE);
+            //var.NameCheck = JOptionPane.showInputDialog(null, "確定這組名字(Y/N)?\n\n" + Name, "絕代江湖", JOptionPane.PLAIN_MESSAGE);
 //            var.NameCheck = new Scanner(System.in).next();
-            } while (!"y".equalsIgnoreCase(var.NameCheck) && !"是".equalsIgnoreCase(var.NameCheck) && !"1".equalsIgnoreCase(var.NameCheck));
+            //} while (!"y".equalsIgnoreCase(var.NameCheck) && !"是".equalsIgnoreCase(var.NameCheck) && !"1".equalsIgnoreCase(var.NameCheck));
 //        System.out.println("");
             JOptionPane.showMessageDialog(null, "歡迎 : " + var.PlayerName + " 大俠 - 來到絕代江湖世界。", "絕代江湖", JOptionPane.PLAIN_MESSAGE);
             //取名結束
             i = true;
         }
+    }
+
+    //公式
+    public void ex() {
+        cdv.HPMAX = (STR * 2) + (INT * 1 + 2) + AGI;
+        cdv.DEF = (float) ((AGI * 1.1f) + (LUK * 0.7f));
+        int idef = (int) (cdv.DEF + 0.5f);
+        cdv.def = idef;
     }
 
     //NPC素質+到玩家身上
@@ -122,20 +132,19 @@ public class ArenaPlayer {
     //計算固定能力值(overload)
     public void setDiathesis(int cdvdiathesis) {
         if (cdv.diathesis >= 0 && cdv.HPMIN == cdv.HPMAX) {
-            cdv.HPMAX = (STR * 2) + (INT * 1 + 2) + AGI;
+            ex();
             cdv.HPMIN = cdv.HPMAX;
-            //cdv.DEF = (AGI * 2 + 2 + LUK * 2) + 1 + INT;
+        } else {
+            ex();
+            cdv.HPMIN = cdv.HPMIN;
         }
-        cdv.HPMAX = (STR * 2) + (INT * 1 + 2) + AGI;
-        cdv.HPMIN = cdv.HPMIN;
     }
 
     //(overload)NPC+素質
     public void setDiathesis() {
         if (x == true) {
-            cdv.HPMAX = (STR * 2) + (INT * 1 + 2) + AGI;
+            ex();
             cdv.HPMIN = cdv.HPMAX;
-            //cdv.DEF = (AGI * 2 + 2 + LUK * 2) + 1 + INT;
         }
     }
 
@@ -160,7 +169,7 @@ public class ArenaPlayer {
         damge = eq[num];
         b = "damge : " + damge;
         printfChatLog(a + " ----- " + b);
-        playDamge(damge, cdv.DEF, cdv.HPMIN);
+        playDamge(damge, cdv.def, cdv.HPMIN);
     }
 
     //玩家受傷害
@@ -168,7 +177,9 @@ public class ArenaPlayer {
         int tmp = (def - da);
         if (tmp > 0) {
             cdv.HPMIN = hp;
+        } else if (tmp < 0) {
+            cdv.HPMIN += (tmp);
         }
-        cdv.HPMIN += (tmp);
     }
+
 }
