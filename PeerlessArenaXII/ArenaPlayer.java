@@ -36,6 +36,8 @@ public class ArenaPlayer {
     public boolean z = true;
     //NPC+素質
     public boolean x = true;
+    //怪物最後傷害
+    public int damge;
 
     //設定名字 
     public void setName() {
@@ -150,8 +152,6 @@ public class ArenaPlayer {
 
     //怪物隨機範圍值浮動傷害
     public void RonDamge(int lv, int hp, int strMax, int strMin, int def) {
-        //怪物最後傷害
-        int damge = 0;
         //計算固定能力值
         //setDiathesis();
         int toStr = strMax - strMin;
@@ -168,7 +168,7 @@ public class ArenaPlayer {
         int num = (int) (Math.random() * toStr);
         damge = eq[num];
         b = "damge : " + damge;
-        printfChatLog(a + " ----- " + b, 1);
+        //printfChatLog(a + " ----- " + b, 1);
         playDamge(damge, cdv.def, cdv.HPMIN);
     }
 

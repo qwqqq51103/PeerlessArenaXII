@@ -372,7 +372,7 @@ public class GameMS extends javax.swing.JFrame {
             npc.setChoosePartner();
             CdvUpdata();
             npc.setLoves();
-            顯示夥伴.setText("目前夥伴123456 : " + GameVar.NpcName[GameVar.choose - 1]);
+            顯示夥伴.setText("目前夥伴 : " + GameVar.NpcName[GameVar.choose - 1]);
         } else {
             a = "夥伴資訊：不可更換夥伴！";
             printfChatLog(a, 1);
