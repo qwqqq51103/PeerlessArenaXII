@@ -125,7 +125,7 @@ public class ArenaPlayer {
             setDiathesis(diath);
         } else {
             a = "沒有足夠的能力點";
-            printfChatLog(a);
+            printfChatLog(a, 1);
         }
     }
 
@@ -149,7 +149,7 @@ public class ArenaPlayer {
     }
 
     //怪物隨機範圍值浮動傷害
-    public void RonDamg(int lv, int hp, int strMax, int strMin, int def) {
+    public void RonDamge(int lv, int hp, int strMax, int strMin, int def) {
         //怪物最後傷害
         int damge = 0;
         //計算固定能力值
@@ -168,7 +168,7 @@ public class ArenaPlayer {
         int num = (int) (Math.random() * toStr);
         damge = eq[num];
         b = "damge : " + damge;
-        printfChatLog(a + " ----- " + b);
+        printfChatLog(a + " ----- " + b, 1);
         playDamge(damge, cdv.def, cdv.HPMIN);
     }
 

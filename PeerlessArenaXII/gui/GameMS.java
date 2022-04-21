@@ -90,24 +90,15 @@ public class GameMS extends javax.swing.JFrame {
 
         chatLog.setEditable(false);
         chatLog.setForeground(new java.awt.Color(51, 255, 0));
-        chatLog.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                chatLogAncestorAdded(evt);
-            }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
-        });
         outText.setViewportView(chatLog);
 
-        Name.setText("姓名 :");
+        Name.setText("**");
 
-        exp.setText("經驗 :");
+        exp.setText("**");
 
-        Level.setText("等級 :");
+        Level.setText("**");
 
-        稱號.setText("稱號 :");
+        稱號.setText("**");
 
         更新.setText("更新(卡住請按)");
         更新.addActionListener(new java.awt.event.ActionListener() {
@@ -123,13 +114,13 @@ public class GameMS extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("jLabel1");
+        jLabel1.setText("**");
 
-        jLabel2.setText("jLabel2");
+        jLabel2.setText("**");
 
-        jLabel3.setText("jLabel3");
+        jLabel3.setText("**");
 
-        jLabel4.setText("jLabel4");
+        jLabel4.setText("**");
 
         jButton2.setText("增加");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -159,11 +150,11 @@ public class GameMS extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setText("jLabel5");
+        jLabel5.setText("**");
 
-        jLabel6.setText("jLabel6");
+        jLabel6.setText("**");
 
-        jLabel7.setText("jLabel7");
+        jLabel7.setText("**");
 
         javax.swing.GroupLayout 人物資訊Layout = new javax.swing.GroupLayout(人物資訊);
         人物資訊.setLayout(人物資訊Layout);
@@ -243,26 +234,7 @@ public class GameMS extends javax.swing.JFrame {
 
         主畫面.addTab("人物資訊", 人物資訊);
 
-        夥伴資訊.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                夥伴資訊AncestorAdded(evt);
-            }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
-        });
-
         顯示夥伴.setText("尚未選擇夥伴");
-        顯示夥伴.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                顯示夥伴AncestorAdded(evt);
-            }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
-        });
 
         選擇夥伴.setText("選擇");
         選擇夥伴.addActionListener(new java.awt.event.ActionListener() {
@@ -394,14 +366,6 @@ public class GameMS extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void 顯示夥伴AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_顯示夥伴AncestorAdded
-
-    }//GEN-LAST:event_顯示夥伴AncestorAdded
-
-    private void 夥伴資訊AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_夥伴資訊AncestorAdded
-        // TODO add your handling code here:
-    }//GEN-LAST:event_夥伴資訊AncestorAdded
-
     private void 選擇夥伴ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_選擇夥伴ActionPerformed
 
         if (gv.isOneChoose) {
@@ -411,21 +375,21 @@ public class GameMS extends javax.swing.JFrame {
             顯示夥伴.setText("目前夥伴 : " + GameVar.NpcName[GameVar.choose - 1]);
         } else {
             a = "夥伴資訊：不可更換夥伴！";
-            printfChatLog(a);
+            printfChatLog(a, 1);
         }
     }//GEN-LAST:event_選擇夥伴ActionPerformed
 
     private void 更新ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_更新ActionPerformed
         // TODO add your handling code her
         Updata();
-        loveupdate();
+        LoveUpdate();
     }//GEN-LAST:event_更新ActionPerformed
 
     private void 開始ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_開始ActionPerformed
         // TODO add your handling code here:
         if (ap.i == true) {
             a = "人物資訊：已有名字！！";
-            printfChatLog(a);
+            printfChatLog(a, 1);
         } else {
             ap.setName();
         }
@@ -433,10 +397,6 @@ public class GameMS extends javax.swing.JFrame {
         Updata();
         CdvUpdata();
     }//GEN-LAST:event_開始ActionPerformed
-
-    private void chatLogAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_chatLogAncestorAdded
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chatLogAncestorAdded
 
     private void 選擇怪物ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_選擇怪物ActionPerformed
         if (ap.i == true && gv.isOneChoose == false) {
@@ -462,7 +422,7 @@ public class GameMS extends javax.swing.JFrame {
             value.append("\n " + GameVar.NpcName[i] + "\t" + GameVar.NpcLevelName[GameVar.NpcLevel[i]] + "\t" + GameVar.NpcLoves[i]);
         }
         //夥伴好感度.setText("姓名\t稱號\t好感度" + value.toString());
-        loveupdate();
+        LoveUpdate();
     }//GEN-LAST:event_夥伴好感度AncestorAdded
 
     private void 同行奇遇ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_同行奇遇ActionPerformed
@@ -541,15 +501,30 @@ public class GameMS extends javax.swing.JFrame {
         });
     }
 
-    
     //訊息廣播
-    public static void printfChatLog(String str) {
+    public static void printfChatLog(String str, int i) {
+        switch (i) {
+            case 0:
+                chatLog.setText(null);
+                chatLog.setForeground(java.awt.Color.GREEN);
+                break;
+            case 1:
+                chatLog.setText(null);
+                chatLog.setForeground(java.awt.Color.RED);
+                break;
+            case 2:
+                chatLog.setText(null);
+                chatLog.setForeground(BLUE);
+                break;
+            default:
+                chatLog.setText(null);
+                chatLog.setForeground(BLACK);
+        }
         chatLog.setText(chatLog.getText() + str + "\r\n");
-        chatLog.setForeground(java.awt.Color.GREEN);
     }
 
     //好感度更新
-    public void loveupdate() {
+    public void LoveUpdate() {
         StringBuilder value = new StringBuilder();
         for (int i = 0; i < GameVar.NpcLoves.length; i++) {
             value.append("\n " + GameVar.NpcName[i] + "\t" + GameVar.NpcLevelName[GameVar.NpcLevel[i]] + "\t" + GameVar.NpcLoves[i]);
@@ -579,7 +554,7 @@ public class GameMS extends javax.swing.JFrame {
     //鎖定文字視窗
     static void xx() {
         夥伴好感度.setEnabled(false);
-        //chatLog.setEnabled(false);
+//        chatLog.setEnabled(false);
         怪物.setEnabled(false);
     }
 
@@ -615,6 +590,6 @@ public class GameMS extends javax.swing.JFrame {
     private javax.swing.JButton 選擇夥伴;
     private javax.swing.JButton 選擇怪物;
     private javax.swing.JButton 開始;
-    public javax.swing.JLabel 顯示夥伴;
+    private javax.swing.JLabel 顯示夥伴;
     // End of variables declaration//GEN-END:variables
 }

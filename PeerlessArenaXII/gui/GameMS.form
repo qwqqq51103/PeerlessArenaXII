@@ -61,9 +61,6 @@
               <Color blue="0" green="ff" red="33" type="rgb"/>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="ancestorAdded" listener="javax.swing.event.AncestorListener" parameters="javax.swing.event.AncestorEvent" handler="chatLogAncestorAdded"/>
-          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
           </AuxValues>
@@ -181,22 +178,22 @@
           <SubComponents>
             <Component class="javax.swing.JLabel" name="Name">
               <Properties>
-                <Property name="text" type="java.lang.String" value="&#x59d3;&#x540d; :"/>
+                <Property name="text" type="java.lang.String" value="**"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="exp">
               <Properties>
-                <Property name="text" type="java.lang.String" value="&#x7d93;&#x9a57; :"/>
+                <Property name="text" type="java.lang.String" value="**"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="Level">
               <Properties>
-                <Property name="text" type="java.lang.String" value="&#x7b49;&#x7d1a; :"/>
+                <Property name="text" type="java.lang.String" value="**"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="&#x7a31;&#x865f;">
               <Properties>
-                <Property name="text" type="java.lang.String" value="&#x7a31;&#x865f; :"/>
+                <Property name="text" type="java.lang.String" value="**"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="&#x66f4;&#x65b0;">
@@ -217,22 +214,22 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel1">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jLabel1"/>
+                <Property name="text" type="java.lang.String" value="**"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel2">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jLabel2"/>
+                <Property name="text" type="java.lang.String" value="**"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel3">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jLabel3"/>
+                <Property name="text" type="java.lang.String" value="**"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel4">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jLabel4"/>
+                <Property name="text" type="java.lang.String" value="**"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="jButton2">
@@ -272,25 +269,22 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel5">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jLabel5"/>
+                <Property name="text" type="java.lang.String" value="**"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel6">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jLabel6"/>
+                <Property name="text" type="java.lang.String" value="**"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel7">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jLabel7"/>
+                <Property name="text" type="java.lang.String" value="**"/>
               </Properties>
             </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="&#x5925;&#x4f34;&#x8cc7;&#x8a0a;">
-          <Events>
-            <EventHandler event="ancestorAdded" listener="javax.swing.event.AncestorListener" parameters="javax.swing.event.AncestorEvent" handler="&#x5925;&#x4f34;&#x8cc7;&#x8a0a;AncestorAdded"/>
-          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="&#x5925;&#x4f34;&#x8cc7;&#x8a0a;">
@@ -343,11 +337,8 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="&#x5c1a;&#x672a;&#x9078;&#x64c7;&#x5925;&#x4f34;"/>
               </Properties>
-              <Events>
-                <EventHandler event="ancestorAdded" listener="javax.swing.event.AncestorListener" parameters="javax.swing.event.AncestorEvent" handler="&#x986f;&#x793a;&#x5925;&#x4f34;AncestorAdded"/>
-              </Events>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="GameMS_&#x986f;&#x793a;&#x5925;&#x4f34;"/>
               </AuxValues>
             </Component>
             <Component class="javax.swing.JButton" name="&#x9078;&#x64c7;&#x5925;&#x4f34;">
