@@ -45,7 +45,7 @@ public class monster {
     }
 
     //打怪
-    public void atkmonster() throws InterruptedException {
+    public void atkmonster() {
         //修練三次
         int count = 3;
         //回合
@@ -53,16 +53,17 @@ public class monster {
 //        System.out.println("您目前選擇的是 " + var.mobname[gc.mobnums - 1] + " 怪物");
         JOptionPane.showMessageDialog(null, "您目前選擇的是 " + var.mobname[gc.mobnums - 1] + " 怪物", "絕代江湖", JOptionPane.PLAIN_MESSAGE);
         for (int i = 1; i <= ron; i++) {
+            if(var.die) {
+                var.die = false;
+                break;
+            }
             //傷害計算
             if (cdv.HPMIN > 0) {
                 ap.RonDamge(var.mobLV[gc.mobnums - 1], var.mobHP[gc.mobnums - 1], var.mobSTRMAX[gc.mobnums - 1], var.mobSTRMIN[gc.mobnums - 1], var.mobDEF[gc.mobnums - 1]);
-                a = "回合" + i + " : " + "受到傷害 : " + ap.damge + "剩餘HP : " + cdv.HPMIN;
-                printfChatLog(a, 1);
-            } else {
-                a = "你已死亡";
-                printfChatLog(a, 1);
-                i = 1111;
-                break;
+                a = "回合 " + i + " / " + ron + " :\t" + "受到傷害 : " + ap.damge + "\t剩餘HP : " + cdv.HPMIN;
+                printfChatLog(a, 3);
+                a = "------------------------------------------------------------------------------------------------------------";
+                printfChatLog(a, 3);
             }
         }
 //        for (int i = 0; i < count; i++) {
@@ -74,8 +75,8 @@ public class monster {
         exp.close();
         //System.out.println("此次修煉已完成獲得.....");
     }
-
     //cheak is boss
+
     public void bossPk() {
         if (gc.mobnums == 7 && var.isBoss) {
             int total = 7 * var.atkcount * 3 * var.bossCount;

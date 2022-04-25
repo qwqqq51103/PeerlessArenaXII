@@ -17,6 +17,7 @@ import static PeerlessArenaXII.ChrDiathesisVar.STR;
 import static PeerlessArenaXII.gui.GameMS.printfChatLog;
 import PeerlessArenaXII.gui.GameMS;
 import PeerlessArenaXII.GameMed.ColorOutput;
+import PeerlessArenaXII.npcmethod.monster;
 
 /**
  *
@@ -65,7 +66,7 @@ public class ArenaPlayer {
     //公式
     public void ex() {
         cdv.HPMAX = (STR * 2) + (INT * 1 + 2) + AGI;
-        cdv.DEF = (float) ((AGI * 1.1f) + (LUK * 0.7f));
+        //cdv.DEF = (float) ((AGI * 1.1f) + (LUK * 0.7f));
         int idef = (int) (cdv.DEF + 0.5f);
         cdv.def = idef;
     }
@@ -173,12 +174,18 @@ public class ArenaPlayer {
     }
 
     //玩家受傷害
+    public int tmp;
     public void playDamge(int da, int def, int hp) {
-        int tmp = (def - da);
+        tmp = (def - da);
         if (tmp > 0) {
             cdv.HPMIN = hp;
         } else if (tmp < 0) {
             cdv.HPMIN += (tmp);
+        }
+        if(cdv.HPMIN + tmp < 0) {
+            a = "你已死亡";
+            printfChatLog(a, 3);
+            var.die = true;
         }
     }
 

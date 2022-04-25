@@ -514,7 +514,10 @@ public class GameMS extends javax.swing.JFrame {
                 break;
             case 2:
                 chatLog.setText(null);
-                chatLog.setForeground(BLUE);
+                chatLog.setForeground(java.awt.Color.BLUE);
+                break;
+            case 3:
+                chatLog.setForeground(java.awt.Color.RED);
                 break;
             default:
                 chatLog.setText(null);

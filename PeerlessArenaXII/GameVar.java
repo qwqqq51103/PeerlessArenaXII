@@ -60,4 +60,6 @@ public class GameVar {
     public static String z;
     //選擇夥伴只能1次
     public static boolean isOneChoose = true;
+    //
+    public static boolean die;
 }
