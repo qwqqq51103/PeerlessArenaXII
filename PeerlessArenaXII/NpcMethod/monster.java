@@ -47,32 +47,37 @@ public class monster {
     //打怪
     public void atkmonster() {
         //修練三次
-        int count = 3;
+//        int count = 3;
         //回合
         int ron = 10;
 //        System.out.println("您目前選擇的是 " + var.mobname[gc.mobnums - 1] + " 怪物");
         JOptionPane.showMessageDialog(null, "您目前選擇的是 " + var.mobname[gc.mobnums - 1] + " 怪物", "絕代江湖", JOptionPane.PLAIN_MESSAGE);
         for (int i = 1; i <= ron; i++) {
-            if(var.die) {
-                var.die = false;
+            if (var.die == false) {
+//                var.die = false;
                 break;
-            }
-            //傷害計算
-            if (cdv.HPMIN > 0) {
+            } else if (cdv.HPMIN > 0) {//傷害計算
                 ap.RonDamge(var.mobLV[gc.mobnums - 1], var.mobHP[gc.mobnums - 1], var.mobSTRMAX[gc.mobnums - 1], var.mobSTRMIN[gc.mobnums - 1], var.mobDEF[gc.mobnums - 1]);
                 a = "回合 " + i + " / " + ron + " :\t" + "受到傷害 : " + ap.damge + "\t剩餘HP : " + cdv.HPMIN;
                 printfChatLog(a, 3);
                 a = "------------------------------------------------------------------------------------------------------------";
                 printfChatLog(a, 3);
             }
+            if (var.pass == false) {
+                var.atkcount += ron;
+                //結算
+                exp.close();
+            }
+        }
+        if (var.pass == true) {
+            var.atkcount += ron;
+            //結算
+            exp.close();
         }
 //        for (int i = 0; i < count; i++) {
 //            //用法 修練 停止三秒
 //            Thread.sleep(1 * 3);
 //        }
-        var.atkcount += count;
-        //結算
-        exp.close();
         //System.out.println("此次修煉已完成獲得.....");
     }
     //cheak is boss

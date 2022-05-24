@@ -61,5 +61,6 @@ public class GameVar {
     //選擇夥伴只能1次
     public static boolean isOneChoose = true;
     //
-    public static boolean die;
+    public static boolean die = true;
+    public static boolean pass = false;
 }

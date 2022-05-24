@@ -17,6 +17,7 @@ import PeerlessArenaXII.GameMed.GameContent;
 import static java.awt.Color.*;
 import javafx.scene.paint.Color;
 import PeerlessArenaXII.GameMed.ColorOutput;
+import java.util.Set;
 import static javafx.scene.paint.Color.color;
 
 /**
@@ -83,6 +84,7 @@ public class GameMS extends javax.swing.JFrame {
         選擇怪物 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         怪物 = new javax.swing.JTextArea();
+        jRadioButton1 = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("你好！我是來打雜的");
@@ -318,17 +320,27 @@ public class GameMS extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(怪物);
 
+        jRadioButton1.setText("跳過戰鬥");
+        jRadioButton1.setToolTipText("");
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout 打怪修煉Layout = new javax.swing.GroupLayout(打怪修煉);
         打怪修煉.setLayout(打怪修煉Layout);
         打怪修煉Layout.setHorizontalGroup(
             打怪修煉Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, 打怪修煉Layout.createSequentialGroup()
-                .addContainerGap(478, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jRadioButton1)
+                .addGap(18, 18, 18)
                 .addComponent(選擇怪物)
                 .addGap(25, 25, 25))
             .addGroup(打怪修煉Layout.createSequentialGroup()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 106, Short.MAX_VALUE))
         );
         打怪修煉Layout.setVerticalGroup(
             打怪修煉Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -336,7 +348,9 @@ public class GameMS extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(選擇怪物)
+                .addGroup(打怪修煉Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(選擇怪物)
+                    .addComponent(jRadioButton1))
                 .addContainerGap())
         );
 
@@ -399,7 +413,7 @@ public class GameMS extends javax.swing.JFrame {
     }//GEN-LAST:event_開始ActionPerformed
 
     private void 選擇怪物ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_選擇怪物ActionPerformed
-        if (ap.i == true && gv.isOneChoose == false) {
+        if (ap.i == true && gv.isOneChoose == false && gv.die == true) {
             try {
                 // TODO add your handling code here:
                 gm.AtkMonster();
@@ -464,6 +478,12 @@ public class GameMS extends javax.swing.JFrame {
         怪物.setText(" 怪物\t等級\t血量\t攻擊\t防禦" + value.toString());
         Updata();
     }//GEN-LAST:event_怪物AncestorAdded
+
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+        // TODO add your handling code here:
+        jRadioButton1.setSelected(true);
+        gv.pass = true;
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -578,6 +598,7 @@ public class GameMS extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane outText;
