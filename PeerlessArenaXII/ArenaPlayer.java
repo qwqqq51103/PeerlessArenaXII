@@ -175,17 +175,19 @@ public class ArenaPlayer {
 
     //玩家受傷害
     public int tmp;
+
     public void playDamge(int da, int def, int hp) {
         tmp = (def - da);
         if (tmp > 0) {
             cdv.HPMIN = hp;
+
         } else if (tmp < 0) {
             cdv.HPMIN += (tmp);
         }
-        if(cdv.HPMIN + tmp < 0) {
-            a = "你已死亡";
+        if (cdv.HPMIN <= 0) {
+            a = "你已死亡\n" + "最後受傷害 : \t" + tmp + "\n剩餘HP : \t" + cdv.HPMIN;
             printfChatLog(a, 3);
-            var.die = true;
+            var.isDie = true;
         }
     }
 

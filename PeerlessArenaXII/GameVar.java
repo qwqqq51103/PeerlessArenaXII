@@ -15,7 +15,8 @@ public class GameVar {
     //確定玩家名稱
     public static String NameCheck;
     //NPC名稱
-    public static String[] NpcName = {"江小魚", "花無缺", "鐵心蘭", "燕南天", "蘇櫻"};
+    public static String[] NpcName = {"1.江小魚", "2.花無缺", "3.鐵心蘭", "4.燕南天", "5.蘇櫻"};
+    public static String[] NpcNameXnum = {"江小魚", "花無缺", "鐵心蘭", "燕南天", "蘇櫻"};
     //NPC好感度
     public static int[] NpcLoves = new int[5];
     //NPC等級
@@ -47,7 +48,7 @@ public class GameVar {
     //角色經驗
     public static int ChrExp = 0; //綁EXP階級
     //角色等級
-    public static int ChrLevel = 50;
+    public static int ChrLevel = 0;
     //夥伴經驗
     public static int paExp = 0;
     //打王資格
@@ -61,6 +62,7 @@ public class GameVar {
     //選擇夥伴只能1次
     public static boolean isOneChoose = true;
     //
-    public static boolean die = true;
+    public static boolean isDie;
     public static boolean pass = false;
+    public static int money;
 }

@@ -6,6 +6,8 @@
 package PeerlessArenaXII.npcmethod;
 
 import PeerlessArenaXII.ChrDiathesisVar;
+import PeerlessArenaXII.GameMed.ColorOutput;
+import static PeerlessArenaXII.GameMed.ColorOutput.Color.RED;
 import PeerlessArenaXII.GameMed.GameContent;
 import PeerlessArenaXII.GameVar;
 import static PeerlessArenaXII.GameVar.x;
@@ -22,15 +24,16 @@ public class exp {
 
     GameVar var = new GameVar();
     GameContent gc = new GameContent();
+
     //計算經驗並給予
-    public void chrexp() {
+    public void chrexp(int vt) {
         //場數
         if (var.atkcount >= 0) {
             //怪物強度 //
             if (gc.mobnums >= 4) {
                 //菁英場
                 //一場經驗 * 3
-                int total = gc.mobnums * var.atkcount * 3;
+                int total = gc.mobnums * var.atkcount * 3 * vt;
                 var.ChrExp += total;
 //                System.out.println("此次【菁英場】修煉已完成，" + var.NpcName[var.choose - 1] + "獲得" + total + "經驗");
                 JOptionPane.showMessageDialog(null, "此次【菁英場】修煉已完成，" + var.NpcName[var.choose - 1] + "獲得" + total + "經驗", "絕代江湖", JOptionPane.PLAIN_MESSAGE);
@@ -38,10 +41,10 @@ public class exp {
                 var.atkcount++;
             } else {
                 //普通場
-                int total = gc.mobnums * 10;
+                int total = gc.mobnums * 10 * vt;
                 var.ChrExp += total;
 //                System.out.println("此次【普通場】修煉已完成，" + var.NpcName[var.choose - 1] + "獲得" + total + "經驗");
-                JOptionPane.showMessageDialog(null, "此次【普通場】修煉已完成，" + var.NpcName[var.choose - 1] + "獲得" + total + "經驗", "絕代江湖", JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showMessageDialog(null, "此次【普通場】修煉已完成，" + "\n" + var.NpcName[var.choose - 1] + "\n獲得" + total + "經驗", "絕代江湖", JOptionPane.PLAIN_MESSAGE);
             }
         } else {
             System.out.println("");
@@ -49,11 +52,14 @@ public class exp {
     }
 
     //結算,計算經驗並給予(套)
-    public void close() {
-        chrexp();
+    public void close(int vt) {
+        chrexp(vt);
         checkExp();
+        var.money += 1;
 //        System.out.println("\n名稱：" + var.NpcName[var.choose - 1] + "\n經驗：" + var.ChrExp + "\n等級：" + var.ChrLevel);
-        JOptionPane.showMessageDialog(null, "\n名稱：" + var.NpcName[var.choose - 1] + "\n經驗：" + var.ChrExp + "\n等級：" + var.ChrLevel, "絕代江湖", JOptionPane.PLAIN_MESSAGE);
+        if (var.isDie == false) {
+            JOptionPane.showMessageDialog(null, "\n名稱：" + var.NpcName[var.choose - 1] + "\n經驗：" + var.ChrExp + "\n等級：" + var.ChrLevel, "絕代江湖", JOptionPane.PLAIN_MESSAGE);
+        }
     }
 
     //計算經驗是否升等

@@ -13,6 +13,7 @@ import java.util.Scanner;
 import java.util.*;
 import javax.swing.JOptionPane;
 import PeerlessArenaXII.ArenaPlayer;
+import PeerlessArenaXII.ChrDiathesisVar;
 import static PeerlessArenaXII.GameVar.choose;
 import javafx.scene.paint.Color;
 
@@ -72,8 +73,11 @@ public class npc {
         do {
 //            System.out.println("");
             //強轉
-            var.z = JOptionPane.showInputDialog(null, s1 + "\n" + str);
-            var.choose = Integer.parseInt(var.z);
+            var.z = (String) JOptionPane.showInputDialog(null, s1, "絕代江湖", JOptionPane.PLAIN_MESSAGE, null, var.NpcName, 1);
+            char x = var.z.charAt(0);
+            var.choose = Character.getNumericValue(x);
+//            var.z = JOptionPane.showInputDialog(null, s1 + "\n" + str);
+//            var.choose = Integer.parseInt(var.z);
 //            var.choose = new Scanner(System.in).nextInt();
         } while (var.choose > 5 || var.choose < 1);
 //        System.out.println("");
@@ -139,30 +143,30 @@ public class npc {
         switch (1) {
             case 1:
                 //預設的npc夥伴
-                if (var.talk < 10) {
+                if (var.talk <= 10) {
                     String[] talk = {"你好", "你又來了", "怎麼又是你!", "聽說我家鄉有寶藏圖!", "一起去釣魚吧!"};
                     int num = (int) (Math.random() * talk.length);
-                    str = (var.NpcName[var.choose - 1] + "  :   " + talk[num]);
-                    printfChatLog(str, 2);
+                    str = ("對話次數 : " + (var.talk + 1) + "\t\n" + var.NpcNameXnum[var.choose - 1] + "  :   " + talk[num]);
+                    printfChatLog(str, 4);
 //                    System.out.println();
 //                    System.out.println(talk[num]);
-                } else if (var.talk > 20 && var.talk < 25) {
+                } else if (var.talk > 11 && var.talk < 25) {
                     String[] talk2 = {"聽說帶著我去同行有好處哦!", "又見面了遇到妳真好!"};
                     int num2 = (int) (Math.random() * talk2.length);
-                    str = (var.NpcName[var.choose - 1] + "  :  " + talk2[num2]);
-                    printfChatLog(str, 2);
+                    str = ("對話次數 : " + (var.talk + 1) + "\t\n" + var.NpcNameXnum[var.choose - 1] + "  :  " + talk2[num2]);
+                    printfChatLog(str, 4);
 //                    System.out.println();
 //                    System.out.println(talk2[num2]);
 
                 } else if (var.talk == nums[0]) {
-                    str = "一直找我聊天好感度大爆";
-                    printfChatLog(str, 2);
+                    str = "對話次數 : " + (var.talk + 1) + "\n一直找我聊天好感度大爆";
+                    printfChatLog(str, 4);
 //                    System.out.println();
 //                    System.out.println("一直找我聊天好感度大爆發");
                     var.NpcLoves[var.choose - 1] += 90;
                 } else {
-                    str = "普通";
-                    printfChatLog(str, 2);
+                    str = "對話次數 : " + (var.talk + 1) + "\n普通";
+                    printfChatLog(str, 4);
 //                    System.out.println("普通");
                 }
                 var.talk++;

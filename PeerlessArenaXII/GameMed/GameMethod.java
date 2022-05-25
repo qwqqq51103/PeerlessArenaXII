@@ -42,9 +42,9 @@ public class GameMethod {
         //System.out.println("要幹嘛?\n1.聊天談心\n2.交換夥伴\n3.退出");
         String str = "你要做什麼?\n";
         str += "1.聊天談心\n";
-        str += "2.交換夥伴\n";
-        str += "3.退出\n";
-        var.z = (String) JOptionPane.showInputDialog(null, str, null, JOptionPane.PLAIN_MESSAGE, null, new String[]{"1", "2", "3"}, 1);
+//        str += "2.交換夥伴\n";
+//        str += "3.退出\n";
+        var.z = (String) JOptionPane.showInputDialog(null, str, null, JOptionPane.PLAIN_MESSAGE, null, new String[]{"1"}, 1);
 //        m = new Scanner(System.in).next();
         if ("1".equalsIgnoreCase(var.z)) {
             npc.givePartner();//method
