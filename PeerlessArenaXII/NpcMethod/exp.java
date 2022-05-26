@@ -35,7 +35,6 @@ public class exp {
                 //一場經驗 * 3
                 int total = gc.mobnums * var.atkcount * 3 * vt;
                 var.ChrExp += total;
-//                System.out.println("此次【菁英場】修煉已完成，" + var.NpcName[var.choose - 1] + "獲得" + total + "經驗");
                 JOptionPane.showMessageDialog(null, "此次【菁英場】修煉已完成，" + var.NpcName[var.choose - 1] + "獲得" + total + "經驗", "絕代江湖", JOptionPane.PLAIN_MESSAGE);
                 //chatLog.setText("此次【菁英場】修煉已完成，" + var.NpcName[var.choose - 1] + "獲得" + total + "經驗");
                 var.atkcount++;
@@ -43,7 +42,6 @@ public class exp {
                 //普通場
                 int total = gc.mobnums * 10 * vt;
                 var.ChrExp += total;
-//                System.out.println("此次【普通場】修煉已完成，" + var.NpcName[var.choose - 1] + "獲得" + total + "經驗");
                 JOptionPane.showMessageDialog(null, "此次【普通場】修煉已完成，" + "\n" + var.NpcName[var.choose - 1] + "\n獲得" + total + "經驗", "絕代江湖", JOptionPane.PLAIN_MESSAGE);
             }
         } else {
@@ -55,8 +53,7 @@ public class exp {
     public void close(int vt) {
         chrexp(vt);
         checkExp();
-        var.money += 1;
-//        System.out.println("\n名稱：" + var.NpcName[var.choose - 1] + "\n經驗：" + var.ChrExp + "\n等級：" + var.ChrLevel);
+        var.money = var.pass ? var.money + (vt * 1) : var.money + 1;
         if (var.isDie == false) {
             JOptionPane.showMessageDialog(null, "\n名稱：" + var.NpcName[var.choose - 1] + "\n經驗：" + var.ChrExp + "\n等級：" + var.ChrLevel, "絕代江湖", JOptionPane.PLAIN_MESSAGE);
         }

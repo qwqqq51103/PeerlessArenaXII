@@ -11,7 +11,7 @@ package PeerlessArenaXII;
 public class ChrDiathesisVar {
 
     //素質
-    public static int diathesis = 0;
+    public static int diathesis = 1110;
     //
     final static int preset = 1;
     public static int STR = preset;
@@ -19,7 +19,7 @@ public class ChrDiathesisVar {
     public static int AGI = preset;
     public static int LUK = preset;
     public static int HPMAX = 0;
-    public static int HPMIN = HPMAX;
+    public static int HPMIN = 0;
     public static int HPDAM;
     public static float DEF;
     public static int def;

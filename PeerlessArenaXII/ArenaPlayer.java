@@ -31,14 +31,17 @@ public class ArenaPlayer {
     ColorOutput cp = new ColorOutput();
     String a;
     String b;
+
     //名字
     public static boolean i = false;
     //素質
     public boolean z = true;
     //NPC+素質
     public boolean x = true;
-    //怪物最後傷害
+    //怪物傷害
     public int damge;
+    //玩家傷害
+    public int Pdamge;
 
     //設定名字 
     public void setName() {
@@ -46,17 +49,7 @@ public class ArenaPlayer {
             //do {
             String[] s = {"初夏薄荷", "初夏", "薄荷"};
             var.PlayerName = (String) JOptionPane.showInputDialog(null, "請選擇你的大名", "絕代江湖", JOptionPane.PLAIN_MESSAGE, null, s, 1);
-//            System.out.print("請輸入您的大名 : ");
-//            var.PlayerName = new Scanner(System.in).next();
-//            System.out.println("");
             String Name = var.str + "\n等級 : " + var.NpcLevel[0] + "\n稱號 : " + var.NpcLevelName[0] + "\n姓名 : " + var.PlayerName;
-//            JOptionPane.showMessageDialog(null, Name, "絕代江湖", JOptionPane.PLAIN_MESSAGE);
-//            System.out.println(var.str + "\n等級 : " + var.NpcLevel[0] + "\n稱號 : " + var.NpcLevelName[0] + "\n姓名 : " + var.PlayerName);
-//            System.out.println("");
-            //var.NameCheck = JOptionPane.showInputDialog(null, "確定這組名字(Y/N)?\n\n" + Name, "絕代江湖", JOptionPane.PLAIN_MESSAGE);
-//            var.NameCheck = new Scanner(System.in).next();
-            //} while (!"y".equalsIgnoreCase(var.NameCheck) && !"是".equalsIgnoreCase(var.NameCheck) && !"1".equalsIgnoreCase(var.NameCheck));
-//        System.out.println("");
             JOptionPane.showMessageDialog(null, "歡迎 : " + var.PlayerName + " 大俠 - 來到絕代江湖世界。", "絕代江湖", JOptionPane.PLAIN_MESSAGE);
             //取名結束
             i = true;
@@ -66,7 +59,7 @@ public class ArenaPlayer {
     //公式
     public void ex() {
         cdv.HPMAX = (STR * 2) + (INT * 1 + 2) + AGI;
-        //cdv.DEF = (float) ((AGI * 1.1f) + (LUK * 0.7f));
+        cdv.DEF = (float) ((AGI * 1.1f) + (LUK * 0.7f));
         int idef = (int) (cdv.DEF + 0.5f);
         cdv.def = idef;
     }
@@ -119,16 +112,19 @@ public class ArenaPlayer {
 
     //消耗能力值 &&  = and    || = or
     public void addDiathesis(int diath, int str, int agi, int in, int luk) {
-        if (diath > 0 && z == true) {
+        a = "沒有足夠的能力點";
+        b = "死亡時不可消耗能力點";
+        if (diath > 0 && z == true && var.isDie == false) {
             cdv.diathesis--;
             cdv.STR = cdv.STR + str;
             cdv.AGI = cdv.AGI + agi;
             cdv.INT = cdv.INT + in;
             cdv.LUK = cdv.LUK + luk;
             setDiathesis(diath);
-        } else {
-            a = "沒有足夠的能力點";
+        } else if (var.isDie == false) {
             printfChatLog(a, 1);
+        } else {
+            printfChatLog(b, 1);
         }
     }
 
@@ -151,10 +147,9 @@ public class ArenaPlayer {
         }
     }
 
-    //怪物隨機範圍值浮動傷害
+    //怪物隨機範圍值浮動傷害(MOB)
     public void RonDamge(int lv, int hp, int strMax, int strMin, int def) {
         //計算固定能力值
-        //setDiathesis();
         int toStr = strMax - strMin;
         int[] eq = new int[toStr + 1];
         for (int i = 0; i <= toStr; i++) {
@@ -185,9 +180,30 @@ public class ArenaPlayer {
             cdv.HPMIN += (tmp);
         }
         if (cdv.HPMIN <= 0) {
-            a = "你已死亡\n" + "最後受傷害 : \t" + tmp + "\n剩餘HP : \t" + cdv.HPMIN;
+            a = "你已死亡\n" + "最後受傷害 : " + tmp + "\n剩餘HP : " + cdv.HPMIN;
             printfChatLog(a, 3);
             var.isDie = true;
+        }
+    }
+
+    //玩家打怪物傷害(Chr)
+    public void playRonDange(int chrLv, int chrStr, int chrHp, int chrBuff, int chrDebuff, int mobHPMIN, int mobDef) {
+        cdv.STR = chrStr + chrBuff - chrDebuff;
+        //printfChatLog(a, AGI);
+        mobDange(cdv.STR, mobHPMIN, mobDef);
+    }
+
+    //mob受傷
+    public void mobDange(int chrStr, int mobHPMIN, int mobDef) {
+        Pdamge = (mobDef - chrStr);
+        if (Pdamge > 0) {
+            var.mobHPMIN[gc.mobnums - 1] = mobHPMIN;
+        } else if (Pdamge < 0) {
+            var.mobHPMIN[gc.mobnums - 1] += (Pdamge);
+        }
+        if (var.mobHPMIN[gc.mobnums - 1] <= 0) {
+            a = "取得勝利";
+            printfChatLog(a, 1);
         }
     }
 

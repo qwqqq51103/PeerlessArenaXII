@@ -48,39 +48,23 @@ public class npc {
                 var.NpcLoves[4] = 100;
                 break;
         }
-
-//        System.out.println("姓名\t稱號\t好感度");
         String value = "所有NPC的好感度列表 \n";
-//        for (int i = 0; i < var.NpcLoves.length; i++) {
-////            System.out.println(var.NpcName[i] + "\t" + var.NpcLevelName[var.NpcLevel[i]] + "\t" + var.NpcLoves[i]);
-//            value += String.format("%s  %s  %d\n", var.NpcName[i], var.NpcLevelName[var.NpcLevel[i]], var.NpcLoves[i]);
-//        }
-//        JOptionPane.showMessageDialog(null, value, "絕代江湖", JOptionPane.PLAIN_MESSAGE);
     }
 
     //選擇你的夥伴
     public void setChoosePartner() {
         String s1 = ("請 " + var.PlayerName + " 大俠選擇一位江湖人，進行結伴同行! (選擇結伴同行好感度會浮動)");
-//        for (int i = 0; i < var.NpcName.length; i++) {
-//            System.out.println((i + 1) + "\t" + var.NpcName[i] + "\t" + var.NpcLevelName[var.NpcLevel[i]] + "\t" + var.NpcLoves[i]);
-//        }
         String str = "1.江小魚\n";
         str += "2.花無缺\n";
         str += "3.鐵心蘭\n";
         str += "4.燕南天\n";
         str += "5.蘇櫻";
-//        JOptionPane.showInputDialog(null, s1 + "\n" + str, "Test", JOptionPane.PLAIN_MESSAGE);
         do {
-//            System.out.println("");
             //強轉
             var.z = (String) JOptionPane.showInputDialog(null, s1, "絕代江湖", JOptionPane.PLAIN_MESSAGE, null, var.NpcName, 1);
             char x = var.z.charAt(0);
             var.choose = Character.getNumericValue(x);
-//            var.z = JOptionPane.showInputDialog(null, s1 + "\n" + str);
-//            var.choose = Integer.parseInt(var.z);
-//            var.choose = new Scanner(System.in).nextInt();
         } while (var.choose > 5 || var.choose < 1);
-//        System.out.println("");
         String s3 = ("恭喜大俠選擇成功以後  " + var.NpcName[var.choose - 1] + "  就是你的江湖好夥伴");
         JOptionPane.showMessageDialog(null, s3, "絕代江湖", JOptionPane.PLAIN_MESSAGE);
         int oneChoose = choose - 1;
@@ -124,13 +108,10 @@ public class npc {
         int[] nums = new int[1];
         for (int i = 0; i < nums.length; i++) {
             nums[i] = (int) (Math.random() * 11 - 1);
-            //System.out.println("今日幸運數 : " + nums[i]);
         }
         //找夥伴
         for (int i = var.choose - 1; i < var.choose; i++) {
             str = (i - var.choose + 2) + "." + var.NpcName[var.choose - 1];
-            //printfChatLog(str);
-            //System.out.println((i - var.choose + 2) + "." + var.NpcName[var.choose - 1]);
         }
         //找新增夥伴
         for (int i = 0; i < var.partnerCount; i++) {
@@ -138,8 +119,6 @@ public class npc {
             //printfChatLog(str);
             //System.out.println((i + 2) + "." + var.partnerName[i]);
         }
-        //String a = "跟誰聊天? ";
-        //yn = new Scanner(System.in).nextInt();
         switch (1) {
             case 1:
                 //預設的npc夥伴
@@ -148,32 +127,22 @@ public class npc {
                     int num = (int) (Math.random() * talk.length);
                     str = ("對話次數 : " + (var.talk + 1) + "\t\n" + var.NpcNameXnum[var.choose - 1] + "  :   " + talk[num]);
                     printfChatLog(str, 4);
-//                    System.out.println();
-//                    System.out.println(talk[num]);
                 } else if (var.talk > 11 && var.talk < 25) {
                     String[] talk2 = {"聽說帶著我去同行有好處哦!", "又見面了遇到妳真好!"};
                     int num2 = (int) (Math.random() * talk2.length);
                     str = ("對話次數 : " + (var.talk + 1) + "\t\n" + var.NpcNameXnum[var.choose - 1] + "  :  " + talk2[num2]);
                     printfChatLog(str, 4);
-//                    System.out.println();
-//                    System.out.println(talk2[num2]);
 
                 } else if (var.talk == nums[0]) {
                     str = "對話次數 : " + (var.talk + 1) + "\n一直找我聊天好感度大爆";
                     printfChatLog(str, 4);
-//                    System.out.println();
-//                    System.out.println("一直找我聊天好感度大爆發");
                     var.NpcLoves[var.choose - 1] += 90;
                 } else {
                     str = "對話次數 : " + (var.talk + 1) + "\n普通";
                     printfChatLog(str, 4);
-//                    System.out.println("普通");
                 }
                 var.talk++;
                 var.NpcLoves[var.choose - 1] += 10;
-//                str = "夥伴名稱 : " + var.NpcName[var.choose - 1] + "\t" + var.NpcLoves[var.choose - 1];
-//                printfChatLog(str);
-//                System.out.println("夥伴名稱 : " + var.NpcName[var.choose - 1] + "\t" + var.NpcLoves[var.choose - 1]);
                 break;
             default:
                 //新增的夥伴

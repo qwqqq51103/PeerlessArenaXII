@@ -27,13 +27,6 @@ public class GameContent {
         GameVar var = new GameVar();
         GameMethod gm = new GameMethod();
         while (gameday <= 100) {
-//            System.out.println();
-//            System.out.println("遊戲進行到第" + gameday + "天");
-//            System.out.println("1.新增夥伴名稱");
-//            System.out.println("2.管理夥伴");
-//            System.out.println("3.打怪修練");
-//            System.out.println("4.同行奇遇");
-//            gamechoose = new Scanner(System.in).nextInt();
             String str = "遊戲進行到第" + gameday + "天\n";
             str += "1.新增夥伴名稱\n";
             str += "2.管理夥伴\n";
