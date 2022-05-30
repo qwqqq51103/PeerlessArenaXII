@@ -13,6 +13,7 @@ import java.util.Scanner;
 import java.util.*;
 import javax.swing.JOptionPane;
 import PeerlessArenaXII.ChrDiathesisVar;
+import PeerlessArenaXII.NpcMethod.MobEffect;
 import static PeerlessArenaXII.gui.GameMS.printfChatLog;
 
 /**
@@ -26,6 +27,7 @@ public class monster {
     exp exp = new exp();
     ArenaPlayer ap = new ArenaPlayer();
     ChrDiathesisVar cdv = new ChrDiathesisVar();
+    MobEffect mef = new MobEffect();
     String a;
 
     //(選擇怪物)
@@ -41,12 +43,15 @@ public class monster {
     //打怪
     public void atkmonster() {
         //回合
-        int ron = 1;
+        int ron = 10;
         JOptionPane.showMessageDialog(null, "您目前選擇的是 " + var.mobname[gc.mobnums - 1] + " 怪物", "絕代江湖", JOptionPane.PLAIN_MESSAGE);
         int vt = 0;
         String b;
         for (int i = 1; i <= ron; i++) {
             if (var.isDie == true) {
+                break;
+            } else if (var.mobHPMIN[gc.mobnums - 1] <= 0) {
+                ap.mobDie();
                 break;
             } else if (cdv.HPMIN > 0) {//傷害計算
                 b = "玩家目前血量 : " + cdv.HPMIN + "\t\t怪物目前血量 : " + var.mobHPMIN[gc.mobnums - 1];
@@ -60,16 +65,16 @@ public class monster {
                             + " / "
                             + ron
                             + "\n怪物傷害 : "
-                            + ap.damge
-                            + "\t\t\t玩家傷害 : "
+                            + ap.damge + "\t\t\t"
+                            + "玩家傷害 : "
                             + cdv.STR
                             + "\n受到傷害 : "
-                            + (cdv.def - ap.damge)
-                            + "\t\t\t怪物受傷害 : "
+                            + (cdv.def - ap.damge) + "\t\t\t"
+                            + "怪物受傷害 : "
                             + ap.Pdamge
                             + "\n剩餘HP : "
-                            + cdv.HPMIN
-                            + "\t\t\t怪物剩餘HP : "
+                            + cdv.HPMIN + "\t\t\t"
+                            + "怪物剩餘HP : "
                             + var.mobHPMIN[gc.mobnums - 1];
                     vt++;
                     printfChatLog(a, 3);
@@ -89,8 +94,8 @@ public class monster {
             exp.close(vt);
         }
     }
-    //cheak is boss
 
+    //cheak is boss
     public void bossPk() {
         if (gc.mobnums == 7 && var.isBoss) {
             int total = 7 * var.atkcount * 3 * var.bossCount;

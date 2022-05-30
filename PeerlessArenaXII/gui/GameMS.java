@@ -87,6 +87,7 @@ public class GameMS extends javax.swing.JFrame {
         怪物 = new javax.swing.JTextArea();
         jCheckBox1 = new javax.swing.JCheckBox();
         jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("你好！我是來打雜的");
@@ -95,6 +96,8 @@ public class GameMS extends javax.swing.JFrame {
         chatLog.setEditable(false);
         chatLog.setForeground(new java.awt.Color(51, 255, 0));
         outText.setViewportView(chatLog);
+
+        主畫面.setBackground(new java.awt.Color(244, 244, 244));
 
         Name.setText("**");
 
@@ -345,6 +348,13 @@ public class GameMS extends javax.swing.JFrame {
             }
         });
 
+        jButton6.setText("清除文字");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout 打怪修煉Layout = new javax.swing.GroupLayout(打怪修煉);
         打怪修煉.setLayout(打怪修煉Layout);
         打怪修煉Layout.setHorizontalGroup(
@@ -360,7 +370,8 @@ public class GameMS extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(打怪修煉Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton5)
-                    .addComponent(選擇怪物))
+                    .addComponent(選擇怪物)
+                    .addComponent(jButton6))
                 .addGap(25, 25, 25))
         );
         打怪修煉Layout.setVerticalGroup(
@@ -371,6 +382,8 @@ public class GameMS extends javax.swing.JFrame {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
                     .addGroup(打怪修煉Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton5)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(打怪修煉Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -527,6 +540,11 @@ public class GameMS extends javax.swing.JFrame {
         CdvUpdata();
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        chatLog.setText(null);
+    }//GEN-LAST:event_jButton6ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -638,6 +656,7 @@ public class GameMS extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -17,6 +17,7 @@ import static PeerlessArenaXII.ChrDiathesisVar.STR;
 import static PeerlessArenaXII.gui.GameMS.printfChatLog;
 import PeerlessArenaXII.gui.GameMS;
 import PeerlessArenaXII.GameMed.ColorOutput;
+import PeerlessArenaXII.NpcMethod.MobEffect;
 import PeerlessArenaXII.npcmethod.monster;
 
 /**
@@ -29,6 +30,7 @@ public class ArenaPlayer {
     GameContent gc = new GameContent();
     ChrDiathesisVar cdv = new ChrDiathesisVar();
     ColorOutput cp = new ColorOutput();
+    MobEffect mef = new MobEffect();
     String a;
     String b;
 
@@ -186,9 +188,14 @@ public class ArenaPlayer {
         }
     }
 
+    public void playDie() {
+
+    }
+
     //玩家打怪物傷害(Chr)
     public void playRonDange(int chrLv, int chrStr, int chrHp, int chrBuff, int chrDebuff, int mobHPMIN, int mobDef) {
         cdv.STR = chrStr + chrBuff - chrDebuff;
+        mef.mobDebuff();
         //printfChatLog(a, AGI);
         mobDange(cdv.STR, mobHPMIN, mobDef);
     }
@@ -201,10 +208,11 @@ public class ArenaPlayer {
         } else if (Pdamge < 0) {
             var.mobHPMIN[gc.mobnums - 1] += (Pdamge);
         }
-        if (var.mobHPMIN[gc.mobnums - 1] <= 0) {
-            a = "取得勝利";
-            printfChatLog(a, 1);
-        }
     }
 
+    public void mobDie() {
+        var.mobHPMIN[gc.mobnums - 1] = var.mobHP[gc.mobnums - 1];
+        a = "取得勝利";
+        printfChatLog(a, 3);
+    }
 }
