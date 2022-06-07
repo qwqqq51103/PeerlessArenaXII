@@ -21,7 +21,7 @@ public class MobEffect {
 
     public void mobDebuff() {
         //num = (int) (Math.random() * 2 + 1);
-        mobDebuff(num);
+        //mobDebuff(num);
     }
 
     void mobDebuff(int num) {
@@ -29,7 +29,7 @@ public class MobEffect {
         switch (num) {
             case 0:
                 //虛弱
-                cdv.STR = cdv.STR / 21;
+                cdv.STR = cdv.STR / 2;
                 a = "此回合不幸獲得 虛弱 狀態";
                 printfChatLog(a, 3);
                 break;

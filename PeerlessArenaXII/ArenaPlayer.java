@@ -19,6 +19,7 @@ import PeerlessArenaXII.gui.GameMS;
 import PeerlessArenaXII.GameMed.ColorOutput;
 import PeerlessArenaXII.NpcMethod.MobEffect;
 import PeerlessArenaXII.npcmethod.monster;
+import PeerlessArenaXII.MobVar;
 
 /**
  *
@@ -31,6 +32,7 @@ public class ArenaPlayer {
     ChrDiathesisVar cdv = new ChrDiathesisVar();
     ColorOutput cp = new ColorOutput();
     MobEffect mef = new MobEffect();
+    MobVar mv = new MobVar();
     String a;
     String b;
 
@@ -113,21 +115,30 @@ public class ArenaPlayer {
     }
 
     //消耗能力值 &&  = and    || = or
-    public void addDiathesis(int diath, int str, int agi, int in, int luk) {
+    public void addDiathesis(int diath, int str, int agi, int in, int luk, boolean op) {
         a = "沒有足夠的能力點";
         b = "死亡時不可消耗能力點";
-        if (diath > 0 && z == true && var.isDie == false) {
-            cdv.diathesis--;
-            cdv.STR = cdv.STR + str;
-            cdv.AGI = cdv.AGI + agi;
-            cdv.INT = cdv.INT + in;
-            cdv.LUK = cdv.LUK + luk;
-            setDiathesis(diath);
-        } else if (var.isDie == false) {
-            printfChatLog(a, 1);
+        if (op == true) {
+            if (diath > 0 && z == true && var.isDie == false) {
+                cdv.diathesis = cdv.diathesis - cdv.daitTotal;
+                cdv.STR = cdv.STR + str;
+                cdv.AGI = cdv.AGI + agi;
+                cdv.INT = cdv.INT + in;
+                cdv.LUK = cdv.LUK + luk;
+                setDiathesis(diath);
+            } else if (var.isDie == false) {
+                printfChatLog(a, 1);
+            } else {
+                printfChatLog(b, 1);
+            }
         } else {
-            printfChatLog(b, 1);
+            System.out.println("test");
         }
+    }
+
+    //預示能力值
+    public void addDiathesis() {
+
     }
 
     //計算固定能力值(overload)
@@ -204,14 +215,14 @@ public class ArenaPlayer {
     public void mobDange(int chrStr, int mobHPMIN, int mobDef) {
         Pdamge = (mobDef - chrStr);
         if (Pdamge > 0) {
-            var.mobHPMIN[gc.mobnums - 1] = mobHPMIN;
+            mv.mobHPMIN[gc.mobnums - 1] = mobHPMIN;
         } else if (Pdamge < 0) {
-            var.mobHPMIN[gc.mobnums - 1] += (Pdamge);
+            mv.mobHPMIN[gc.mobnums - 1] += (Pdamge);
         }
     }
 
     public void mobDie() {
-        var.mobHPMIN[gc.mobnums - 1] = var.mobHP[gc.mobnums - 1];
+        mv.mobHPMIN[gc.mobnums - 1] = mv.mobHP[gc.mobnums - 1];
         a = "取得勝利";
         printfChatLog(a, 3);
     }

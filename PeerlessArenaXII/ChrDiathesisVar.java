@@ -18,10 +18,11 @@ public class ChrDiathesisVar {
     public static int INT = preset;
     public static int AGI = preset;
     public static int LUK = preset;
-    public static int HPMAX = 0;
-    public static int HPMIN = 0;
+    public static int HPMAX = 1;
+    public static int HPMIN = 1;
     public static int HPDAM;
-    public static float DEF;
-    public static int def;
+    public static float DEF = 1.0f;
+    public static int def = 1;
+    public static int daitTotal = 0;
 
 }

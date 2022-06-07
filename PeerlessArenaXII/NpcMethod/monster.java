@@ -13,6 +13,7 @@ import java.util.Scanner;
 import java.util.*;
 import javax.swing.JOptionPane;
 import PeerlessArenaXII.ChrDiathesisVar;
+import PeerlessArenaXII.MobVar;
 import PeerlessArenaXII.NpcMethod.MobEffect;
 import static PeerlessArenaXII.gui.GameMS.printfChatLog;
 
@@ -28,11 +29,12 @@ public class monster {
     ArenaPlayer ap = new ArenaPlayer();
     ChrDiathesisVar cdv = new ChrDiathesisVar();
     MobEffect mef = new MobEffect();
+    MobVar mv = new MobVar();
     String a;
 
     //(選擇怪物)
     public void monster() {
-        var.z = (String) JOptionPane.showInputDialog(null, "", "絕代江湖", JOptionPane.PLAIN_MESSAGE, null, var.mobname, 1);
+        var.z = (String) JOptionPane.showInputDialog(null, "", "絕代江湖", JOptionPane.PLAIN_MESSAGE, null, mv.mobname, 1);
         if (var.z == null) {
             return;
         }
@@ -44,20 +46,20 @@ public class monster {
     public void atkmonster() {
         //回合
         int ron = 10;
-        JOptionPane.showMessageDialog(null, "您目前選擇的是 " + var.mobname[gc.mobnums - 1] + " 怪物", "絕代江湖", JOptionPane.PLAIN_MESSAGE);
+        JOptionPane.showMessageDialog(null, "您目前選擇的是 " + mv.mobname[gc.mobnums - 1] + " 怪物", "絕代江湖", JOptionPane.PLAIN_MESSAGE);
         int vt = 0;
         String b;
         for (int i = 1; i <= ron; i++) {
             if (var.isDie == true) {
                 break;
-            } else if (var.mobHPMIN[gc.mobnums - 1] <= 0) {
+            } else if (mv.mobHPMIN[gc.mobnums - 1] <= 0) {
                 ap.mobDie();
                 break;
             } else if (cdv.HPMIN > 0) {//傷害計算
-                b = "玩家目前血量 : " + cdv.HPMIN + "\t\t怪物目前血量 : " + var.mobHPMIN[gc.mobnums - 1];
+                b = "玩家目前血量 : " + cdv.HPMIN + "\t\t怪物目前血量 : " + mv.mobHPMIN[gc.mobnums - 1];
                 printfChatLog(b, 3);
-                ap.RonDamge(var.mobLV[gc.mobnums - 1], var.mobHP[gc.mobnums - 1], var.mobSTRMAX[gc.mobnums - 1], var.mobSTRMIN[gc.mobnums - 1], var.mobDEF[gc.mobnums - 1]);
-                ap.playRonDange(var.ChrLevel, cdv.STR, cdv.HPMIN, 0, 0, var.mobHPMIN[gc.mobnums - 1], var.mobDEF[gc.mobnums - 1]);
+                ap.RonDamge(mv.mobLV[gc.mobnums - 1], mv.mobHP[gc.mobnums - 1], mv.mobSTRMAX[gc.mobnums - 1], mv.mobSTRMIN[gc.mobnums - 1], mv.mobDEF[gc.mobnums - 1]);
+                ap.playRonDange(var.ChrLevel, cdv.STR, cdv.HPMIN, 0, 0, mv.mobHPMIN[gc.mobnums - 1], mv.mobDEF[gc.mobnums - 1]);
                 if (var.isDie == false) {
                     a
                             = "回合 : "
@@ -75,7 +77,7 @@ public class monster {
                             + "\n剩餘HP : "
                             + cdv.HPMIN + "\t\t\t"
                             + "怪物剩餘HP : "
-                            + var.mobHPMIN[gc.mobnums - 1];
+                            + mv.mobHPMIN[gc.mobnums - 1];
                     vt++;
                     printfChatLog(a, 3);
                 }

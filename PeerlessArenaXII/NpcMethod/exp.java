@@ -11,6 +11,7 @@ import static PeerlessArenaXII.GameMed.ColorOutput.Color.RED;
 import PeerlessArenaXII.GameMed.GameContent;
 import PeerlessArenaXII.GameVar;
 import static PeerlessArenaXII.GameVar.x;
+import PeerlessArenaXII.MobVar;
 import PeerlessArenaXII.gui.GameMS;
 import java.util.Scanner;
 import java.util.*;
@@ -24,6 +25,7 @@ public class exp {
 
     GameVar var = new GameVar();
     GameContent gc = new GameContent();
+    MobVar mv = new MobVar();
 
     //計算經驗並給予
     public void chrexp(int vt) {
@@ -66,7 +68,7 @@ public class exp {
             if (var.ChrExp >= var.exp[i]) {
                 arr = new int[var.exp.length - 1];
                 var.ChrLevel++;
-                if (x < var.mobname.length - 1) {
+                if (x < mv.mobname.length - 1) {
                     x++;
                 }
                 for (int index = 0; index < i; index++) {

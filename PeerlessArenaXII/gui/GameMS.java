@@ -17,8 +17,13 @@ import PeerlessArenaXII.GameMed.GameContent;
 import static java.awt.Color.*;
 import javafx.scene.paint.Color;
 import PeerlessArenaXII.GameMed.ColorOutput;
+import PeerlessArenaXII.MobVar;
 import java.util.Set;
 import static javafx.scene.paint.Color.color;
+import java.awt.Image;
+import java.awt.Toolkit;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 
 /**
  *
@@ -34,8 +39,13 @@ public class GameMS extends javax.swing.JFrame {
     ChrDiathesisVar cdv = new ChrDiathesisVar();
     GameContent gc = new GameContent();
     ColorOutput cp = new ColorOutput();
+    MobVar mv = new MobVar();
     String str;
     String a;
+    int STR = 0;
+    int AGI = 0;
+    int INT = 0;
+    int LUK = 0;
 
     /**
      * Creates new form GameMS
@@ -63,18 +73,24 @@ public class GameMS extends javax.swing.JFrame {
         稱號 = new javax.swing.JLabel();
         更新 = new javax.swing.JButton();
         開始 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        血量 = new javax.swing.JLabel();
+        防禦 = new javax.swing.JLabel();
+        金錢 = new javax.swing.JLabel();
+        詳細資訊 = new javax.swing.JPanel();
+        力量 = new javax.swing.JLabel();
+        敏捷 = new javax.swing.JLabel();
+        智力 = new javax.swing.JLabel();
+        幸運 = new javax.swing.JLabel();
+        智力增加 = new javax.swing.JButton();
+        幸運增加 = new javax.swing.JButton();
+        力量增加 = new javax.swing.JButton();
+        敏捷增加 = new javax.swing.JButton();
+        剩餘能力點 = new javax.swing.JLabel();
+        力量預示 = new javax.swing.JLabel();
+        敏捷預示 = new javax.swing.JLabel();
+        智力預示 = new javax.swing.JLabel();
+        幸運預示 = new javax.swing.JLabel();
+        確定 = new javax.swing.JButton();
         夥伴資訊 = new javax.swing.JPanel();
         顯示夥伴 = new javax.swing.JLabel();
         選擇夥伴 = new javax.swing.JButton();
@@ -85,13 +101,18 @@ public class GameMS extends javax.swing.JFrame {
         選擇怪物 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         怪物 = new javax.swing.JTextArea();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        跳過戰鬥 = new javax.swing.JCheckBox();
+        復活 = new javax.swing.JButton();
+        清除文字 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("你好！我是來打雜的");
         setBackground(new java.awt.Color(204, 255, 255));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
 
         chatLog.setEditable(false);
         chatLog.setForeground(new java.awt.Color(51, 255, 0));
@@ -121,49 +142,11 @@ public class GameMS extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("**");
+        血量.setText("**");
 
-        jLabel2.setText("**");
+        防禦.setText("**");
 
-        jLabel3.setText("**");
-
-        jLabel4.setText("**");
-
-        jButton2.setText("增加");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        jButton4.setText("增加");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-
-        jButton1.setText("增加");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jButton3.setText("增加");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
-        jLabel5.setText("**");
-
-        jLabel6.setText("**");
-
-        jLabel7.setText("**");
-
-        jLabel8.setText("**");
+        金錢.setText("**");
 
         javax.swing.GroupLayout 人物資訊Layout = new javax.swing.GroupLayout(人物資訊);
         人物資訊.setLayout(人物資訊Layout);
@@ -179,32 +162,19 @@ public class GameMS extends javax.swing.JFrame {
                         .addComponent(更新))
                     .addGroup(人物資訊Layout.createSequentialGroup()
                         .addGroup(人物資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jButton1)
-                            .addComponent(jLabel5)
+                            .addComponent(Name, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(血量))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(人物資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Level, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(防禦))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(人物資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(人物資訊Layout.createSequentialGroup()
-                                .addGroup(人物資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Name, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel6))
+                                .addComponent(exp, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(人物資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(Level, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jButton2)
-                                    .addComponent(jLabel7))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(人物資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(人物資訊Layout.createSequentialGroup()
-                                        .addGroup(人物資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(exp, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel3)
-                                            .addComponent(jButton3))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(人物資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel4)
-                                            .addComponent(稱號, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jButton4)))
-                                    .addComponent(jLabel8))))
+                                .addComponent(稱號, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(金錢))
                         .addGap(0, 66, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -219,24 +189,10 @@ public class GameMS extends javax.swing.JFrame {
                     .addComponent(稱號, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(人物資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addGroup(人物資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(人物資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton4)
-                    .addComponent(jButton1)
-                    .addComponent(jButton3))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel5)
-                .addGap(18, 18, 18)
+                    .addComponent(血量)
+                    .addComponent(防禦)
+                    .addComponent(金錢))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE)
                 .addGroup(人物資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(更新)
                     .addComponent(開始))
@@ -244,6 +200,136 @@ public class GameMS extends javax.swing.JFrame {
         );
 
         主畫面.addTab("人物資訊", 人物資訊);
+
+        力量.setText("**");
+
+        敏捷.setText("**");
+
+        智力.setText("**");
+
+        幸運.setText("**");
+
+        智力增加.setText("增加");
+        智力增加.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                智力增加ActionPerformed(evt);
+            }
+        });
+
+        幸運增加.setText("增加");
+        幸運增加.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                幸運增加ActionPerformed(evt);
+            }
+        });
+
+        力量增加.setText("增加");
+        力量增加.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                力量增加ActionPerformed(evt);
+            }
+        });
+
+        敏捷增加.setText("增加");
+        敏捷增加.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                敏捷增加ActionPerformed(evt);
+            }
+        });
+
+        剩餘能力點.setText("**");
+
+        力量預示.setForeground(new java.awt.Color(255, 51, 51));
+        力量預示.setText("**");
+
+        敏捷預示.setForeground(new java.awt.Color(255, 51, 51));
+        敏捷預示.setText("**");
+
+        智力預示.setForeground(new java.awt.Color(255, 51, 51));
+        智力預示.setText("**");
+
+        幸運預示.setForeground(new java.awt.Color(255, 51, 51));
+        幸運預示.setText("**");
+
+        確定.setText("確定");
+        確定.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                確定ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout 詳細資訊Layout = new javax.swing.GroupLayout(詳細資訊);
+        詳細資訊.setLayout(詳細資訊Layout);
+        詳細資訊Layout.setHorizontalGroup(
+            詳細資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, 詳細資訊Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(詳細資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(詳細資訊Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(剩餘能力點))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, 詳細資訊Layout.createSequentialGroup()
+                        .addGroup(詳細資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(詳細資訊Layout.createSequentialGroup()
+                                .addComponent(力量)
+                                .addGap(18, 18, 18)
+                                .addComponent(力量預示))
+                            .addGroup(詳細資訊Layout.createSequentialGroup()
+                                .addComponent(敏捷)
+                                .addGap(18, 18, 18)
+                                .addComponent(敏捷預示))
+                            .addComponent(力量增加)
+                            .addComponent(敏捷增加))
+                        .addGap(157, 157, 157)
+                        .addGroup(詳細資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(詳細資訊Layout.createSequentialGroup()
+                                .addComponent(幸運增加)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
+                                .addComponent(確定))
+                            .addGroup(詳細資訊Layout.createSequentialGroup()
+                                .addGroup(詳細資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(詳細資訊Layout.createSequentialGroup()
+                                        .addComponent(幸運)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(幸運預示))
+                                    .addComponent(智力增加)
+                                    .addGroup(詳細資訊Layout.createSequentialGroup()
+                                        .addComponent(智力)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(智力預示)))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addGap(110, 110, 110))
+        );
+        詳細資訊Layout.setVerticalGroup(
+            詳細資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(詳細資訊Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(詳細資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(力量)
+                    .addComponent(智力)
+                    .addComponent(力量預示)
+                    .addComponent(智力預示))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(詳細資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(力量增加)
+                    .addComponent(智力增加))
+                .addGap(29, 29, 29)
+                .addGroup(詳細資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(敏捷)
+                    .addComponent(幸運)
+                    .addComponent(幸運預示)
+                    .addComponent(敏捷預示))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(詳細資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(幸運增加)
+                    .addComponent(確定)
+                    .addComponent(敏捷增加))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addComponent(剩餘能力點)
+                .addGap(43, 43, 43))
+        );
+
+        主畫面.addTab("詳細資訊", 詳細資訊);
 
         顯示夥伴.setText("尚未選擇夥伴");
 
@@ -258,12 +344,12 @@ public class GameMS extends javax.swing.JFrame {
         夥伴好感度.setColumns(20);
         夥伴好感度.setRows(5);
         夥伴好感度.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 夥伴好感度AncestorAdded(evt);
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
         });
         jScrollPane1.setViewportView(夥伴好感度);
@@ -319,39 +405,39 @@ public class GameMS extends javax.swing.JFrame {
         怪物.setColumns(20);
         怪物.setRows(5);
         怪物.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 怪物AncestorAdded(evt);
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
         });
         jScrollPane2.setViewportView(怪物);
 
-        jCheckBox1.setText("跳過戰鬥");
-        jCheckBox1.addMouseListener(new java.awt.event.MouseAdapter() {
+        跳過戰鬥.setText("跳過戰鬥");
+        跳過戰鬥.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jCheckBox1MouseClicked(evt);
+                跳過戰鬥MouseClicked(evt);
             }
         });
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+        跳過戰鬥.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
-            }
-        });
-
-        jButton5.setText("小二救命");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                跳過戰鬥ActionPerformed(evt);
             }
         });
 
-        jButton6.setText("清除文字");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        復活.setText("小二救命");
+        復活.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                復活ActionPerformed(evt);
+            }
+        });
+
+        清除文字.setText("清除文字");
+        清除文字.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                清除文字ActionPerformed(evt);
             }
         });
 
@@ -363,15 +449,15 @@ public class GameMS extends javax.swing.JFrame {
                 .addGroup(打怪修煉Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(打怪修煉Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jCheckBox1))
+                        .addComponent(跳過戰鬥))
                     .addGroup(打怪修煉Layout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(打怪修煉Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton5)
+                    .addComponent(復活)
                     .addComponent(選擇怪物)
-                    .addComponent(jButton6))
+                    .addComponent(清除文字))
                 .addGap(25, 25, 25))
         );
         打怪修煉Layout.setVerticalGroup(
@@ -382,13 +468,13 @@ public class GameMS extends javax.swing.JFrame {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
                     .addGroup(打怪修煉Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton6)
+                        .addComponent(清除文字)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton5)))
+                        .addComponent(復活)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(打怪修煉Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(選擇怪物)
-                    .addComponent(jCheckBox1))
+                    .addComponent(跳過戰鬥))
                 .addContainerGap())
         );
 
@@ -484,66 +570,92 @@ public class GameMS extends javax.swing.JFrame {
         Updata();
     }//GEN-LAST:event_同行奇遇ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void 力量增加ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_力量增加ActionPerformed
         // TODO add your handling code here:
-        ap.addDiathesis(cdv.diathesis, 1, 0, 0, 0);
-        CdvUpdata();
-    }//GEN-LAST:event_jButton1ActionPerformed
+        STR++;
+        StringBuilder value = new StringBuilder();
+        value.append("+ " + STR);
+        力量預示.setText(value.toString());
+//        CdvUpdata();
+    }//GEN-LAST:event_力量增加ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void 智力增加ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_智力增加ActionPerformed
         // TODO add your handling code here:
-        ap.addDiathesis(cdv.diathesis, 0, 1, 0, 0);
-        CdvUpdata();
-    }//GEN-LAST:event_jButton2ActionPerformed
+        AGI++;
+        StringBuilder value = new StringBuilder();
+        value.append("+ " + AGI);
+        智力預示.setText(value.toString());
+//        CdvUpdata();
+    }//GEN-LAST:event_智力增加ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void 敏捷增加ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_敏捷增加ActionPerformed
         // TODO add your handling code here:
-        ap.addDiathesis(cdv.diathesis, 0, 0, 1, 0);
-        CdvUpdata();
-    }//GEN-LAST:event_jButton3ActionPerformed
+        INT++;
+        StringBuilder value = new StringBuilder();
+        value.append("+ " + INT);
+        敏捷預示.setText(value.toString());
+//        CdvUpdata();
+    }//GEN-LAST:event_敏捷增加ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void 幸運增加ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_幸運增加ActionPerformed
         // TODO add your handling code here:
-        ap.addDiathesis(cdv.diathesis, 0, 0, 0, 1);
-        CdvUpdata();
-    }//GEN-LAST:event_jButton4ActionPerformed
+        LUK++;
+        StringBuilder value = new StringBuilder();
+        value.append("+ " + LUK);
+        幸運預示.setText(value.toString());
+//        CdvUpdata();
+    }//GEN-LAST:event_幸運增加ActionPerformed
 
     private void 怪物AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_怪物AncestorAdded
         // TODO add your handling code here:
         StringBuilder value = new StringBuilder();
-        for (int i = 0; i < GameVar.mobnameXnum.length; i++) {
-            value.append("\n " + GameVar.mobnameXnum[i] + "\t" + gv.mobLV[i] + "\t" + gv.mobHP[i] + "\t" + gv.mobSTRMIN[i] + " ~ " + gv.mobSTRMAX[i] + "\t" + gv.mobDEF[i]);
+        for (int i = 0; i < mv.mobnameXnum.length; i++) {
+            value.append("\n " + mv.mobnameXnum[i] + "\t" + mv.mobLV[i] + "\t" + mv.mobHP[i] + "\t" + mv.mobSTRMIN[i] + " ~ " + mv.mobSTRMAX[i] + "\t" + mv.mobDEF[i]);
         }
         怪物.setText(" 怪物\t等級\t血量\t攻擊\t防禦" + value.toString());
         Updata();
     }//GEN-LAST:event_怪物AncestorAdded
 
-    private void jCheckBox1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBox1MouseClicked
+    private void 跳過戰鬥MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_跳過戰鬥MouseClicked
         // TODO add your handling code here:
-        if (jCheckBox1.isSelected() == true) {
+        if (跳過戰鬥.isSelected() == true) {
             gv.pass = true;
         } else {
             gv.pass = false;
         }
-    }//GEN-LAST:event_jCheckBox1MouseClicked
+    }//GEN-LAST:event_跳過戰鬥MouseClicked
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+    private void 跳過戰鬥ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_跳過戰鬥ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
+    }//GEN-LAST:event_跳過戰鬥ActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void 復活ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_復活ActionPerformed
         // TODO add your handling code here:
         gv.money -= 1;
         cdv.HPMIN = cdv.HPMAX;
         gv.isDie = false;
         Updata();
         CdvUpdata();
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_復活ActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void 清除文字ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_清除文字ActionPerformed
         // TODO add your handling code here:
         chatLog.setText(null);
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_清除文字ActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        // TODO add your handling code here:
+        ImageIcon icon = new ImageIcon("PeerlessArenaXII/IU.jpg");
+        setIconImage(icon.getImage());
+    }//GEN-LAST:event_formWindowActivated
+
+    private void 確定ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_確定ActionPerformed
+        // TODO add your handling code here:
+        cdv.daitTotal = STR + AGI + INT + LUK;
+        ap.addDiathesis(cdv.diathesis, STR, AGI, INT, LUK, true);
+        CdvUp();
+        CdvUpdata();
+    }//GEN-LAST:event_確定ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -624,18 +736,30 @@ public class GameMS extends javax.swing.JFrame {
         Level.setText("等級 : " + GameVar.ChrLevel);
         exp.setText("經驗 : " + GameVar.ChrExp);
         稱號.setText("稱號 : " + GameVar.str);
-        jLabel8.setText("金錢 : " + GameVar.money);
+        金錢.setText("金錢 : " + GameVar.money);
     }
 
     //素質更新
     public void CdvUpdata() {
-        jLabel1.setText("STR : " + cdv.STR);
-        jLabel2.setText("AGI : " + cdv.AGI);
-        jLabel3.setText("INT : " + cdv.INT);
-        jLabel4.setText("LUK : " + cdv.LUK);
-        jLabel5.setText("剩餘能力點 : " + cdv.diathesis);
-        jLabel6.setText("HP : " + cdv.HPMAX + " / " + cdv.HPMIN);
-        jLabel7.setText("DEF : " + cdv.DEF + " / " + cdv.def);
+        力量.setText("STR : " + cdv.STR);
+        敏捷.setText("AGI : " + cdv.AGI);
+        智力.setText("INT : " + cdv.INT);
+        幸運.setText("LUK : " + cdv.LUK);
+        剩餘能力點.setText("剩餘能力點 : " + cdv.diathesis);
+        血量.setText("HP : " + cdv.HPMAX + " / " + cdv.HPMIN);
+        防禦.setText("DEF : " + cdv.DEF + " / " + cdv.def);
+    }
+    
+    //預示更新
+    void CdvUp() {
+        力量預示.setText("");
+        敏捷預示.setText("");
+        智力預示.setText("");
+        幸運預示.setText("");
+        STR = 0;
+        AGI = 0;
+        INT = 0;
+        LUK = 0;
     }
 
     //鎖定文字視窗
@@ -651,36 +775,42 @@ public class GameMS extends javax.swing.JFrame {
     private javax.swing.JLabel Name;
     public static javax.swing.JTextPane chatLog;
     private javax.swing.JLabel exp;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane outText;
     private javax.swing.JTabbedPane 主畫面;
     private javax.swing.JPanel 人物資訊;
+    private javax.swing.JLabel 剩餘能力點;
+    private javax.swing.JLabel 力量;
+    private javax.swing.JButton 力量增加;
+    private javax.swing.JLabel 力量預示;
     private javax.swing.JButton 同行奇遇;
     public static javax.swing.JTextArea 夥伴好感度;
     private javax.swing.JPanel 夥伴資訊;
+    private javax.swing.JLabel 幸運;
+    private javax.swing.JButton 幸運增加;
+    private javax.swing.JLabel 幸運預示;
+    private javax.swing.JButton 復活;
     private static javax.swing.JTextArea 怪物;
     private javax.swing.JPanel 打怪修煉;
+    private javax.swing.JLabel 敏捷;
+    private javax.swing.JButton 敏捷增加;
+    private javax.swing.JLabel 敏捷預示;
+    private javax.swing.JLabel 智力;
+    private javax.swing.JButton 智力增加;
+    private javax.swing.JLabel 智力預示;
     private javax.swing.JButton 更新;
+    private javax.swing.JButton 清除文字;
+    private javax.swing.JButton 確定;
     private javax.swing.JLabel 稱號;
+    private javax.swing.JLabel 血量;
+    private javax.swing.JPanel 詳細資訊;
+    private javax.swing.JCheckBox 跳過戰鬥;
     private javax.swing.JButton 選擇夥伴;
     private javax.swing.JButton 選擇怪物;
+    private javax.swing.JLabel 金錢;
     private javax.swing.JButton 開始;
+    private javax.swing.JLabel 防禦;
     private javax.swing.JLabel 顯示夥伴;
     // End of variables declaration//GEN-END:variables
 }
