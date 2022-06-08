@@ -15,6 +15,8 @@ public class ChrDiathesisVar {
     //
     final static int preset = 1;
     public static int STR = preset;
+    public static int STRMAX = 0;
+    public static int STRMIN = 0;
     public static int INT = preset;
     public static int AGI = preset;
     public static int LUK = preset;

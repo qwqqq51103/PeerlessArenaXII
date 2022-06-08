@@ -12,6 +12,10 @@ import PeerlessArenaXII.npcmethod.npc;
 import java.util.logging.Logger;
 import PeerlessArenaXII.GameMed.GameMethod;
 import PeerlessArenaXII.ChrDiathesisVar;
+import static PeerlessArenaXII.ChrDiathesisVar.AGI;
+import static PeerlessArenaXII.ChrDiathesisVar.INT;
+import static PeerlessArenaXII.ChrDiathesisVar.LUK;
+import static PeerlessArenaXII.ChrDiathesisVar.STR;
 import javax.swing.JTextArea;
 import PeerlessArenaXII.GameMed.GameContent;
 import static java.awt.Color.*;
@@ -91,6 +95,10 @@ public class GameMS extends javax.swing.JFrame {
         智力預示 = new javax.swing.JLabel();
         幸運預示 = new javax.swing.JLabel();
         確定 = new javax.swing.JButton();
+        取消 = new javax.swing.JButton();
+        能力點預示 = new javax.swing.JLabel();
+        攻擊力 = new javax.swing.JLabel();
+        攻擊力預示 = new javax.swing.JLabel();
         夥伴資訊 = new javax.swing.JPanel();
         顯示夥伴 = new javax.swing.JLabel();
         選擇夥伴 = new javax.swing.JButton();
@@ -175,13 +183,13 @@ public class GameMS extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(稱號, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(金錢))
-                        .addGap(0, 66, Short.MAX_VALUE)))
+                        .addGap(0, 74, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         人物資訊Layout.setVerticalGroup(
             人物資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(人物資訊Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(23, 23, 23)
                 .addGroup(人物資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Name, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(exp, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -192,7 +200,7 @@ public class GameMS extends javax.swing.JFrame {
                     .addComponent(血量)
                     .addComponent(防禦)
                     .addComponent(金錢))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
                 .addGroup(人物資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(更新)
                     .addComponent(開始))
@@ -258,47 +266,71 @@ public class GameMS extends javax.swing.JFrame {
             }
         });
 
+        取消.setText("取消");
+        取消.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                取消ActionPerformed(evt);
+            }
+        });
+
+        能力點預示.setForeground(new java.awt.Color(255, 51, 51));
+        能力點預示.setText("**");
+
+        攻擊力.setText("攻擊力");
+
+        攻擊力預示.setForeground(new java.awt.Color(255, 51, 51));
+        攻擊力預示.setText("**");
+
         javax.swing.GroupLayout 詳細資訊Layout = new javax.swing.GroupLayout(詳細資訊);
         詳細資訊.setLayout(詳細資訊Layout);
         詳細資訊Layout.setHorizontalGroup(
             詳細資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, 詳細資訊Layout.createSequentialGroup()
+            .addGroup(詳細資訊Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(詳細資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(詳細資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(詳細資訊Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(剩餘能力點))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, 詳細資訊Layout.createSequentialGroup()
                         .addGroup(詳細資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(詳細資訊Layout.createSequentialGroup()
                                 .addComponent(力量)
-                                .addGap(18, 18, 18)
+                                .addGap(1, 1, 1)
                                 .addComponent(力量預示))
                             .addGroup(詳細資訊Layout.createSequentialGroup()
                                 .addComponent(敏捷)
-                                .addGap(18, 18, 18)
+                                .addGap(1, 1, 1)
                                 .addComponent(敏捷預示))
                             .addComponent(力量增加)
                             .addComponent(敏捷增加))
-                        .addGap(157, 157, 157)
+                        .addGap(100, 100, 100)
                         .addGroup(詳細資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(幸運增加)
                             .addGroup(詳細資訊Layout.createSequentialGroup()
-                                .addComponent(幸運增加)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
-                                .addComponent(確定))
+                                .addComponent(幸運)
+                                .addGap(1, 1, 1)
+                                .addComponent(幸運預示))
+                            .addComponent(智力增加)
                             .addGroup(詳細資訊Layout.createSequentialGroup()
                                 .addGroup(詳細資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(詳細資訊Layout.createSequentialGroup()
-                                        .addComponent(幸運)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(幸運預示))
-                                    .addComponent(智力增加)
-                                    .addGroup(詳細資訊Layout.createSequentialGroup()
                                         .addComponent(智力)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(智力預示)))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addGap(110, 110, 110))
+                                        .addGap(1, 1, 1)
+                                        .addComponent(智力預示)
+                                        .addGap(197, 197, 197))
+                                    .addComponent(攻擊力, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addGap(1, 1, 1)
+                                .addComponent(攻擊力預示)
+                                .addGap(125, 125, 125))))
+                    .addGroup(詳細資訊Layout.createSequentialGroup()
+                        .addGap(368, 368, 368)
+                        .addGroup(詳細資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(詳細資訊Layout.createSequentialGroup()
+                                .addComponent(剩餘能力點)
+                                .addGap(1, 1, 1)
+                                .addComponent(能力點預示))
+                            .addGroup(詳細資訊Layout.createSequentialGroup()
+                                .addComponent(確定)
+                                .addGap(60, 60, 60)
+                                .addComponent(取消)))
+                        .addContainerGap(14, Short.MAX_VALUE))))
         );
         詳細資訊Layout.setVerticalGroup(
             詳細資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -308,25 +340,31 @@ public class GameMS extends javax.swing.JFrame {
                     .addComponent(力量)
                     .addComponent(智力)
                     .addComponent(力量預示)
-                    .addComponent(智力預示))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(智力預示)
+                    .addComponent(攻擊力)
+                    .addComponent(攻擊力預示))
+                .addGap(9, 9, 9)
                 .addGroup(詳細資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(力量增加)
                     .addComponent(智力增加))
-                .addGap(29, 29, 29)
+                .addGap(15, 15, 15)
                 .addGroup(詳細資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(敏捷)
                     .addComponent(幸運)
                     .addComponent(幸運預示)
                     .addComponent(敏捷預示))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(9, 9, 9)
                 .addGroup(詳細資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(幸運增加)
-                    .addComponent(確定)
                     .addComponent(敏捷增加))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
-                .addComponent(剩餘能力點)
-                .addGap(43, 43, 43))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addGroup(詳細資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(能力點預示)
+                    .addComponent(剩餘能力點))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(詳細資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(取消)
+                    .addComponent(確定)))
         );
 
         主畫面.addTab("詳細資訊", 詳細資訊);
@@ -373,7 +411,7 @@ public class GameMS extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(選擇夥伴))
                     .addComponent(同行奇遇))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33))
         );
@@ -570,42 +608,6 @@ public class GameMS extends javax.swing.JFrame {
         Updata();
     }//GEN-LAST:event_同行奇遇ActionPerformed
 
-    private void 力量增加ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_力量增加ActionPerformed
-        // TODO add your handling code here:
-        STR++;
-        StringBuilder value = new StringBuilder();
-        value.append("+ " + STR);
-        力量預示.setText(value.toString());
-//        CdvUpdata();
-    }//GEN-LAST:event_力量增加ActionPerformed
-
-    private void 智力增加ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_智力增加ActionPerformed
-        // TODO add your handling code here:
-        AGI++;
-        StringBuilder value = new StringBuilder();
-        value.append("+ " + AGI);
-        智力預示.setText(value.toString());
-//        CdvUpdata();
-    }//GEN-LAST:event_智力增加ActionPerformed
-
-    private void 敏捷增加ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_敏捷增加ActionPerformed
-        // TODO add your handling code here:
-        INT++;
-        StringBuilder value = new StringBuilder();
-        value.append("+ " + INT);
-        敏捷預示.setText(value.toString());
-//        CdvUpdata();
-    }//GEN-LAST:event_敏捷增加ActionPerformed
-
-    private void 幸運增加ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_幸運增加ActionPerformed
-        // TODO add your handling code here:
-        LUK++;
-        StringBuilder value = new StringBuilder();
-        value.append("+ " + LUK);
-        幸運預示.setText(value.toString());
-//        CdvUpdata();
-    }//GEN-LAST:event_幸運增加ActionPerformed
-
     private void 怪物AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_怪物AncestorAdded
         // TODO add your handling code here:
         StringBuilder value = new StringBuilder();
@@ -649,6 +651,11 @@ public class GameMS extends javax.swing.JFrame {
         setIconImage(icon.getImage());
     }//GEN-LAST:event_formWindowActivated
 
+    private void 取消ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_取消ActionPerformed
+        // TODO add your handling code here:
+        CdvUp();
+    }//GEN-LAST:event_取消ActionPerformed
+
     private void 確定ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_確定ActionPerformed
         // TODO add your handling code here:
         cdv.daitTotal = STR + AGI + INT + LUK;
@@ -656,6 +663,30 @@ public class GameMS extends javax.swing.JFrame {
         CdvUp();
         CdvUpdata();
     }//GEN-LAST:event_確定ActionPerformed
+
+    private void 敏捷增加ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_敏捷增加ActionPerformed
+        // TODO add your handling code here:
+        AGI++;
+        Sduf(1);
+    }//GEN-LAST:event_敏捷增加ActionPerformed
+
+    private void 力量增加ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_力量增加ActionPerformed
+        // TODO add your handling code here:
+        STR++;
+        Sduf(0);
+    }//GEN-LAST:event_力量增加ActionPerformed
+
+    private void 幸運增加ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_幸運增加ActionPerformed
+        // TODO add your handling code here:
+        LUK++;
+        Sduf(3);
+    }//GEN-LAST:event_幸運增加ActionPerformed
+
+    private void 智力增加ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_智力增加ActionPerformed
+        // TODO add your handling code here:
+        INT++;
+        Sduf(2);
+    }//GEN-LAST:event_智力增加ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -748,14 +779,17 @@ public class GameMS extends javax.swing.JFrame {
         剩餘能力點.setText("剩餘能力點 : " + cdv.diathesis);
         血量.setText("HP : " + cdv.HPMAX + " / " + cdv.HPMIN);
         防禦.setText("DEF : " + cdv.DEF + " / " + cdv.def);
+        攻擊力.setText("攻擊力 : " + cdv.STRMIN + "~" + cdv.STRMAX);
     }
-    
+
     //預示更新
     void CdvUp() {
         力量預示.setText("");
         敏捷預示.setText("");
         智力預示.setText("");
         幸運預示.setText("");
+        能力點預示.setText("");
+        攻擊力預示.setText("");
         STR = 0;
         AGI = 0;
         INT = 0;
@@ -769,6 +803,49 @@ public class GameMS extends javax.swing.JFrame {
         怪物.setEnabled(false);
     }
 
+    void Sduf(int see) {
+        StringBuilder value = new StringBuilder();
+        StringBuilder value1 = new StringBuilder();
+        StringBuilder value2 = new StringBuilder();
+        int total = STR + LUK + INT + AGI;
+        int reStr = (STR + cdv.STR) + (AGI + cdv.AGI);
+        switch (see) {
+            case 0:
+                value.append("+ " + STR);
+                value1.append("- " + total);
+                value2.append(" 增加後 -> " + reStr / 7 + "~" + reStr);
+                力量預示.setText(value.toString());
+                能力點預示.setText(value1.toString());
+                攻擊力預示.setText(value2.toString());
+                break;
+            case 1:
+                value.append("+ " + AGI);
+                value1.append("- " + total);
+                value2.append(" 增加後 -> " + reStr / 7 + "~" + reStr);
+                敏捷預示.setText(value.toString());
+                能力點預示.setText(value1.toString());
+                攻擊力預示.setText(value2.toString());
+                break;
+            case 2:
+                value.append("+ " + INT);
+                value1.append("- " + total);
+                value2.append(" 增加後 -> " + reStr / 7 + "~" + reStr);
+                智力預示.setText(value.toString());
+                能力點預示.setText(value1.toString());
+                攻擊力預示.setText(value2.toString());
+                break;
+            case 3:
+                value.append("+ " + LUK);
+                value1.append("- " + total);
+                value2.append(" 增加後 -> " + reStr / 7 + "~" + reStr);
+                幸運預示.setText(value.toString());
+                能力點預示.setText(value1.toString());
+                攻擊力預示.setText(value2.toString());
+                break;
+            default:
+                break;
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Level;
@@ -784,6 +861,7 @@ public class GameMS extends javax.swing.JFrame {
     private javax.swing.JLabel 力量;
     private javax.swing.JButton 力量增加;
     private javax.swing.JLabel 力量預示;
+    private javax.swing.JButton 取消;
     private javax.swing.JButton 同行奇遇;
     public static javax.swing.JTextArea 夥伴好感度;
     private javax.swing.JPanel 夥伴資訊;
@@ -793,6 +871,8 @@ public class GameMS extends javax.swing.JFrame {
     private javax.swing.JButton 復活;
     private static javax.swing.JTextArea 怪物;
     private javax.swing.JPanel 打怪修煉;
+    private javax.swing.JLabel 攻擊力;
+    private javax.swing.JLabel 攻擊力預示;
     private javax.swing.JLabel 敏捷;
     private javax.swing.JButton 敏捷增加;
     private javax.swing.JLabel 敏捷預示;
@@ -803,6 +883,7 @@ public class GameMS extends javax.swing.JFrame {
     private javax.swing.JButton 清除文字;
     private javax.swing.JButton 確定;
     private javax.swing.JLabel 稱號;
+    private javax.swing.JLabel 能力點預示;
     private javax.swing.JLabel 血量;
     private javax.swing.JPanel 詳細資訊;
     private javax.swing.JCheckBox 跳過戰鬥;

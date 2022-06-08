@@ -20,6 +20,7 @@ import PeerlessArenaXII.GameMed.ColorOutput;
 import PeerlessArenaXII.NpcMethod.MobEffect;
 import PeerlessArenaXII.npcmethod.monster;
 import PeerlessArenaXII.MobVar;
+import PeerlessArenaXII.npcmethod.monster;
 
 /**
  *
@@ -63,6 +64,8 @@ public class ArenaPlayer {
     //公式
     public void ex() {
         cdv.HPMAX = (STR * 2) + (INT * 1 + 2) + AGI;
+        cdv.STRMAX = (cdv.STR + cdv.AGI);
+        cdv.STRMIN = (STR + AGI) / 7;
         cdv.DEF = (float) ((AGI * 1.1f) + (LUK * 0.7f));
         int idef = (int) (cdv.DEF + 0.5f);
         cdv.def = idef;
@@ -193,9 +196,16 @@ public class ArenaPlayer {
             cdv.HPMIN += (tmp);
         }
         if (cdv.HPMIN <= 0) {
-            a = "你已死亡\n" + "最後受傷害 : " + tmp + "\n剩餘HP : " + cdv.HPMIN;
+            a
+                    = "\n\t\t你已死亡"
+                    + "\n\t\t最後受傷害 : "
+                    + tmp
+                    + "\n\t\t剩餘HP : "
+                    + cdv.HPMIN;
             printfChatLog(a, 3);
             var.isDie = true;
+            mv.mobHPMIN[gc.mobnums - 1] = mv.mobHP[gc.mobnums - 1];
+            return;
         }
     }
 
@@ -204,20 +214,32 @@ public class ArenaPlayer {
     }
 
     //玩家打怪物傷害(Chr)
-    public void playRonDange(int chrLv, int chrStr, int chrHp, int chrBuff, int chrDebuff, int mobHPMIN, int mobDef) {
-        cdv.STR = chrStr + chrBuff - chrDebuff;
-        mef.mobDebuff();
-        //printfChatLog(a, AGI);
-        mobDange(cdv.STR, mobHPMIN, mobDef);
+    public void playRonDange(int chrLv, int chrStrMin, int chrStrMax, int chrHp, int chrBuff, int chrDebuff, int mobHPMIN, int mobDef) {
+        int chrStrNum = chrStrMax - chrStrMin;
+        int[] eq = new int[chrStrNum + 1];
+        for (int i = 0; i <= chrStrNum; i++) {
+            //外層做ep陣列的index
+            for (int j = chrStrMin; j <= chrStrMax; j++) {
+                eq[i] = j;
+            }
+            chrStrMax--;
+        }
+        int num = (int) (Math.random() * chrStrNum);
+        Pdamge = eq[num];
+//        mef.mobDebuff();
+        mobDange(Pdamge, mobHPMIN, mobDef);
     }
+
+    //mob受傷害
+    public int mobtmp;
 
     //mob受傷
     public void mobDange(int chrStr, int mobHPMIN, int mobDef) {
-        Pdamge = (mobDef - chrStr);
-        if (Pdamge > 0) {
+        mobtmp = (mobDef - chrStr);
+        if (mobtmp > 0) {
             mv.mobHPMIN[gc.mobnums - 1] = mobHPMIN;
-        } else if (Pdamge < 0) {
-            mv.mobHPMIN[gc.mobnums - 1] += (Pdamge);
+        } else if (mobtmp < 0) {
+            mv.mobHPMIN[gc.mobnums - 1] += (mobtmp);
         }
     }
 

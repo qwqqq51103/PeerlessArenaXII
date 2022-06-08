@@ -31,6 +31,7 @@ public class monster {
     MobEffect mef = new MobEffect();
     MobVar mv = new MobVar();
     String a;
+    public static int vt = 0;
 
     //(選擇怪物)
     public void monster() {
@@ -47,7 +48,7 @@ public class monster {
         //回合
         int ron = 10;
         JOptionPane.showMessageDialog(null, "您目前選擇的是 " + mv.mobname[gc.mobnums - 1] + " 怪物", "絕代江湖", JOptionPane.PLAIN_MESSAGE);
-        int vt = 0;
+        vt = 0;
         String b;
         for (int i = 1; i <= ron; i++) {
             if (var.isDie == true) {
@@ -59,7 +60,7 @@ public class monster {
                 b = "玩家目前血量 : " + cdv.HPMIN + "\t\t怪物目前血量 : " + mv.mobHPMIN[gc.mobnums - 1];
                 printfChatLog(b, 3);
                 ap.RonDamge(mv.mobLV[gc.mobnums - 1], mv.mobHP[gc.mobnums - 1], mv.mobSTRMAX[gc.mobnums - 1], mv.mobSTRMIN[gc.mobnums - 1], mv.mobDEF[gc.mobnums - 1]);
-                ap.playRonDange(var.ChrLevel, cdv.STR, cdv.HPMIN, 0, 0, mv.mobHPMIN[gc.mobnums - 1], mv.mobDEF[gc.mobnums - 1]);
+                ap.playRonDange(var.ChrLevel, cdv.STRMIN, cdv.STRMAX, cdv.HPMIN, 0, 0, mv.mobHPMIN[gc.mobnums - 1], mv.mobDEF[gc.mobnums - 1]);
                 if (var.isDie == false) {
                     a
                             = "回合 : "
@@ -69,11 +70,11 @@ public class monster {
                             + "\n怪物傷害 : "
                             + ap.damge + "\t\t\t"
                             + "玩家傷害 : "
-                            + cdv.STR
+                            + ap.Pdamge
                             + "\n受到傷害 : "
                             + (cdv.def - ap.damge) + "\t\t\t"
                             + "怪物受傷害 : "
-                            + ap.Pdamge
+                            + ap.mobtmp
                             + "\n剩餘HP : "
                             + cdv.HPMIN + "\t\t\t"
                             + "怪物剩餘HP : "
@@ -89,6 +90,17 @@ public class monster {
                 //結算
                 exp.close(1);
             }
+        }
+        //回合例外
+        if (vt == ron && mv.mobHPMIN[gc.mobnums - 1] <= 0) {
+            a = "取得勝利";
+            printfChatLog(a, 3);
+        }
+        //回合打平
+        if (vt == ron && cdv.HPMIN > 0 && mv.mobHPMIN[gc.mobnums - 1] > 0) {
+            a = "［玩家］:" + var.PlayerName + " 和［ " + mv.mobname[gc.mobnums - 1] + " ］纏鬥了十天十夜難分高下，達成和平協議來日在戰！";
+            printfChatLog(a, 3);
+            mv.mobHPMIN[gc.mobnums - 1] = mv.mobHP[gc.mobnums - 1];
         }
         if (var.pass == true) {
             var.atkcount += ron;
