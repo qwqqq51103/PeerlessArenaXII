@@ -80,6 +80,7 @@ public class GameMS extends javax.swing.JFrame {
         血量 = new javax.swing.JLabel();
         防禦 = new javax.swing.JLabel();
         金錢 = new javax.swing.JLabel();
+        jProgressBar1 = new javax.swing.JProgressBar();
         詳細資訊 = new javax.swing.JPanel();
         力量 = new javax.swing.JLabel();
         敏捷 = new javax.swing.JLabel();
@@ -156,6 +157,9 @@ public class GameMS extends javax.swing.JFrame {
 
         金錢.setText("**");
 
+        jProgressBar1.setMaximum(10);
+        jProgressBar1.setStringPainted(true);
+
         javax.swing.GroupLayout 人物資訊Layout = new javax.swing.GroupLayout(人物資訊);
         人物資訊.setLayout(人物資訊Layout);
         人物資訊Layout.setHorizontalGroup(
@@ -182,8 +186,9 @@ public class GameMS extends javax.swing.JFrame {
                                 .addComponent(exp, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(稱號, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(金錢))
-                        .addGap(0, 74, Short.MAX_VALUE)))
+                            .addComponent(金錢)
+                            .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 86, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         人物資訊Layout.setVerticalGroup(
@@ -195,12 +200,14 @@ public class GameMS extends javax.swing.JFrame {
                     .addComponent(exp, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Level, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(稱號, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
                 .addGroup(人物資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(血量)
                     .addComponent(防禦)
                     .addComponent(金錢))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
                 .addGroup(人物資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(更新)
                     .addComponent(開始))
@@ -317,8 +324,7 @@ public class GameMS extends javax.swing.JFrame {
                                         .addGap(197, 197, 197))
                                     .addComponent(攻擊力, javax.swing.GroupLayout.Alignment.TRAILING))
                                 .addGap(1, 1, 1)
-                                .addComponent(攻擊力預示)
-                                .addGap(125, 125, 125))))
+                                .addComponent(攻擊力預示))))
                     .addGroup(詳細資訊Layout.createSequentialGroup()
                         .addGap(368, 368, 368)
                         .addGroup(詳細資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -329,8 +335,8 @@ public class GameMS extends javax.swing.JFrame {
                             .addGroup(詳細資訊Layout.createSequentialGroup()
                                 .addComponent(確定)
                                 .addGap(60, 60, 60)
-                                .addComponent(取消)))
-                        .addContainerGap(14, Short.MAX_VALUE))))
+                                .addComponent(取消)))))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         詳細資訊Layout.setVerticalGroup(
             詳細資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -411,7 +417,7 @@ public class GameMS extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(選擇夥伴))
                     .addComponent(同行奇遇))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33))
         );
@@ -490,7 +496,7 @@ public class GameMS extends javax.swing.JFrame {
                         .addComponent(跳過戰鬥))
                     .addGroup(打怪修煉Layout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 20, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(打怪修煉Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(復活)
@@ -524,10 +530,9 @@ public class GameMS extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(主畫面)
-                    .addComponent(outText))
+                .addComponent(outText)
                 .addContainerGap())
+            .addComponent(主畫面)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -589,6 +594,7 @@ public class GameMS extends javax.swing.JFrame {
             return;
         }
         Updata();
+        Bar();
         //ap.RonDamg(gv.mobLV[gc.mobnums - 1], gv.mobHP[gc.mobnums - 1], gv.mobSTRMAX[gc.mobnums - 1], gv.mobSTRMIN[gc.mobnums - 1], gv.mobDEF[gc.mobnums - 1]);
     }//GEN-LAST:event_選擇怪物ActionPerformed
 
@@ -847,11 +853,21 @@ public class GameMS extends javax.swing.JFrame {
         }
     }
 
+    void Bar() {
+        if (GameVar.ChrExp >= GameVar.exp[GameVar.ChrLevel - 1]) {
+            jProgressBar1.setMaximum(GameVar.exp[GameVar.ChrLevel - 1]);
+        } else {
+            jProgressBar1.setValue(GameVar.ChrExp);
+            jProgressBar1.setMaximum(GameVar.exp[GameVar.ChrLevel - 1]);
+        }
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Level;
     private javax.swing.JLabel Name;
     public static javax.swing.JTextPane chatLog;
     private javax.swing.JLabel exp;
+    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane outText;
