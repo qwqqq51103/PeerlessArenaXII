@@ -34,7 +34,7 @@ import javax.swing.JFrame;
  * @author Joe
  */
 public class GameMS extends javax.swing.JFrame {
-
+    
     npc npc = new npc();
     ArenaPlayer ap = new ArenaPlayer();
     monster mob = new monster();
@@ -165,30 +165,33 @@ public class GameMS extends javax.swing.JFrame {
         人物資訊Layout.setHorizontalGroup(
             人物資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(人物資訊Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(18, 18, 18)
                 .addGroup(人物資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, 人物資訊Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(開始)
-                        .addGap(18, 18, 18)
-                        .addComponent(更新))
+                    .addComponent(血量)
+                    .addGroup(人物資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(人物資訊Layout.createSequentialGroup()
+                            .addComponent(Name)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Level))
+                        .addComponent(防禦)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, 人物資訊Layout.createSequentialGroup()
+                            .addComponent(exp)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(人物資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(人物資訊Layout.createSequentialGroup()
-                        .addGroup(人物資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Name, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(血量))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(人物資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Level, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(防禦))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(人物資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(人物資訊Layout.createSequentialGroup()
-                                .addComponent(exp, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(稱號, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(金錢)
-                            .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 86, Short.MAX_VALUE)))
+                        .addGap(90, 90, 90)
+                        .addComponent(金錢)
+                        .addGap(0, 0, 0))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, 人物資訊Layout.createSequentialGroup()
+                        .addGap(90, 90, 90)
+                        .addComponent(稱號)
+                        .addGap(0, 0, 0))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, 人物資訊Layout.createSequentialGroup()
+                .addGap(0, 384, Short.MAX_VALUE)
+                .addComponent(開始)
+                .addGap(12, 12, 12)
+                .addComponent(更新)
                 .addContainerGap())
         );
         人物資訊Layout.setVerticalGroup(
@@ -196,22 +199,22 @@ public class GameMS extends javax.swing.JFrame {
             .addGroup(人物資訊Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addGroup(人物資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Name, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(exp, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Level, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(稱號, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                    .addComponent(Level)
+                    .addComponent(稱號)
+                    .addComponent(Name))
+                .addGap(37, 37, 37)
+                .addGroup(人物資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(exp)
+                    .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36)
                 .addGroup(人物資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(血量)
                     .addComponent(防禦)
                     .addComponent(金錢))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addGroup(人物資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(更新)
-                    .addComponent(開始))
-                .addContainerGap())
+                    .addComponent(開始)
+                    .addComponent(更新)))
         );
 
         主畫面.addTab("人物資訊", 人物資訊);
@@ -336,7 +339,7 @@ public class GameMS extends javax.swing.JFrame {
                                 .addComponent(確定)
                                 .addGap(60, 60, 60)
                                 .addComponent(取消)))))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         詳細資訊Layout.setVerticalGroup(
             詳細資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -363,7 +366,7 @@ public class GameMS extends javax.swing.JFrame {
                 .addGroup(詳細資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(幸運增加)
                     .addComponent(敏捷增加))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(詳細資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(能力點預示)
                     .addComponent(剩餘能力點))
@@ -417,7 +420,7 @@ public class GameMS extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(選擇夥伴))
                     .addComponent(同行奇遇))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33))
         );
@@ -433,7 +436,7 @@ public class GameMS extends javax.swing.JFrame {
                 .addGap(31, 31, 31))
             .addGroup(夥伴資訊Layout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -496,7 +499,7 @@ public class GameMS extends javax.swing.JFrame {
                         .addComponent(跳過戰鬥))
                     .addGroup(打怪修煉Layout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 20, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(打怪修煉Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(復活)
@@ -509,7 +512,7 @@ public class GameMS extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, 打怪修煉Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(打怪修煉Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
                     .addGroup(打怪修煉Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(清除文字)
@@ -548,7 +551,7 @@ public class GameMS extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void 選擇夥伴ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_選擇夥伴ActionPerformed
-
+        
         if (gv.isOneChoose) {
             npc.setChoosePartner();
             CdvUpdata();
@@ -771,9 +774,10 @@ public class GameMS extends javax.swing.JFrame {
     public void Updata() {
         Name.setText("姓名 : " + GameVar.PlayerName);
         Level.setText("等級 : " + GameVar.ChrLevel);
-        exp.setText("經驗 : " + GameVar.ChrExp);
+        exp.setText("經驗:");
         稱號.setText("稱號 : " + GameVar.str);
         金錢.setText("金錢 : " + GameVar.money);
+        Bar();
     }
 
     //素質更新
@@ -808,7 +812,7 @@ public class GameMS extends javax.swing.JFrame {
 //        chatLog.setEnabled(false);
         怪物.setEnabled(false);
     }
-
+    
     void Sduf(int see) {
         StringBuilder value = new StringBuilder();
         StringBuilder value1 = new StringBuilder();
@@ -852,14 +856,21 @@ public class GameMS extends javax.swing.JFrame {
                 break;
         }
     }
-
+    
     void Bar() {
-        if (GameVar.ChrExp >= GameVar.exp[GameVar.ChrLevel - 1]) {
-            jProgressBar1.setMaximum(GameVar.exp[GameVar.ChrLevel - 1]);
+        StringBuilder value = new StringBuilder();
+        if (jProgressBar1.getMaximum() <= 100 && GameVar.ChrLevel == 0) {
+            jProgressBar1.setMaximum(100);
         } else {
-            jProgressBar1.setValue(GameVar.ChrExp);
-            jProgressBar1.setMaximum(GameVar.exp[GameVar.ChrLevel - 1]);
+            jProgressBar1.setMaximum(GameVar.exp[GameVar.ChrLevel - 1]);;
         }
+        jProgressBar1.setValue(GameVar.ChrExp);
+//        if (GameVar.ChrExp >= GameVar.exp[GameVar.ChrLevel - 1]) {
+//            jProgressBar1.setMaximum(GameVar.exp[GameVar.ChrLevel - 1]);
+//        } else {
+//            jProgressBar1.setValue(GameVar.ChrExp);
+//            jProgressBar1.setMaximum(GameVar.exp[GameVar.ChrLevel - 1]);
+//        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

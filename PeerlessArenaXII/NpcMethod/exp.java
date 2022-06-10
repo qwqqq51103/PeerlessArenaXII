@@ -68,6 +68,7 @@ public class exp {
             if (var.ChrExp >= var.exp[i]) {
                 arr = new int[var.exp.length - 1];
                 var.ChrLevel++;
+                var.ChrExp = 0;
                 if (x < mv.mobname.length - 1) {
                     x++;
                 }
