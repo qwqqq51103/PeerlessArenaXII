@@ -112,6 +112,19 @@ public class GameMS extends javax.swing.JFrame {
         跳過戰鬥 = new javax.swing.JCheckBox();
         復活 = new javax.swing.JButton();
         清除文字 = new javax.swing.JButton();
+        門派 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        背包 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
+        jRadioButton3 = new javax.swing.JRadioButton();
+        jRadioButton4 = new javax.swing.JRadioButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("你好！我是來打雜的");
@@ -512,6 +525,105 @@ public class GameMS extends javax.swing.JFrame {
 
         主畫面.addTab("打怪打怪囉", 打怪修煉);
 
+        jLabel1.setForeground(new java.awt.Color(204, 0, 0));
+        jLabel1.setText("jLabel1");
+
+        javax.swing.GroupLayout 門派Layout = new javax.swing.GroupLayout(門派);
+        門派.setLayout(門派Layout);
+        門派Layout.setHorizontalGroup(
+            門派Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(門派Layout.createSequentialGroup()
+                .addGap(67, 67, 67)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(103, Short.MAX_VALUE))
+        );
+        門派Layout.setVerticalGroup(
+            門派Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(門派Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        主畫面.addTab("門派", 門派);
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane3.setViewportView(jTextArea1);
+
+        jRadioButton1.setText("jRadioButton1");
+
+        jRadioButton2.setText("jRadioButton2");
+
+        jRadioButton3.setText("jRadioButton3");
+
+        jRadioButton4.setText("jRadioButton6");
+
+        jButton1.setText("jButton1");
+
+        jButton2.setText("jButton2");
+
+        jButton3.setText("jButton3");
+
+        jButton4.setText("jButton5");
+
+        javax.swing.GroupLayout 背包Layout = new javax.swing.GroupLayout(背包);
+        背包.setLayout(背包Layout);
+        背包Layout.setHorizontalGroup(
+            背包Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(背包Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addGroup(背包Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(背包Layout.createSequentialGroup()
+                        .addComponent(jRadioButton4)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton4)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(背包Layout.createSequentialGroup()
+                        .addGroup(背包Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(背包Layout.createSequentialGroup()
+                                .addComponent(jRadioButton1)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton1))
+                            .addGroup(背包Layout.createSequentialGroup()
+                                .addComponent(jRadioButton2)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton2))
+                            .addGroup(背包Layout.createSequentialGroup()
+                                .addComponent(jRadioButton3)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton3)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29))))
+        );
+        背包Layout.setVerticalGroup(
+            背包Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(背包Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(背包Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(背包Layout.createSequentialGroup()
+                        .addGroup(背包Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jRadioButton1)
+                            .addComponent(jButton1))
+                        .addGap(34, 34, 34)
+                        .addGroup(背包Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jRadioButton2)
+                            .addComponent(jButton2))
+                        .addGap(34, 34, 34)
+                        .addGroup(背包Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jRadioButton3)
+                            .addComponent(jButton3)))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
+                .addGroup(背包Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jRadioButton4)
+                    .addComponent(jButton4))
+                .addContainerGap(49, Short.MAX_VALUE))
+        );
+
+        主畫面.addTab("背包", 背包);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -866,9 +978,20 @@ public class GameMS extends javax.swing.JFrame {
     private javax.swing.JLabel Level;
     private javax.swing.JLabel Name;
     public static javax.swing.JTextPane chatLog;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JProgressBar jProgressBar1;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JRadioButton jRadioButton3;
+    private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JScrollPane outText;
     private javax.swing.JTabbedPane 主畫面;
     private javax.swing.JPanel 人物資訊;
@@ -898,6 +1021,7 @@ public class GameMS extends javax.swing.JFrame {
     private javax.swing.JButton 清除文字;
     private javax.swing.JButton 確定;
     private javax.swing.JLabel 稱號;
+    private javax.swing.JPanel 背包;
     private javax.swing.JLabel 能力點預示;
     private javax.swing.JLabel 血量;
     private javax.swing.JPanel 詳細資訊;
@@ -905,6 +1029,7 @@ public class GameMS extends javax.swing.JFrame {
     private javax.swing.JButton 選擇夥伴;
     private javax.swing.JButton 選擇怪物;
     private javax.swing.JLabel 金錢;
+    private javax.swing.JPanel 門派;
     private javax.swing.JButton 開始;
     private javax.swing.JLabel 防禦;
     private javax.swing.JLabel 顯示夥伴;
