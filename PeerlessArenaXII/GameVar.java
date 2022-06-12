@@ -33,6 +33,7 @@ public class GameVar {
     public static int talk = 0;
     //exp階級
     public static int[] exp = {100, 500, 1000, 1500, 2500, 4000, 6500, 10500, 17000, 27500};
+    public static final int[] fexp = {100, 500, 1000, 1500, 2500, 4000, 6500, 10500, 17000, 27500};
     //等級稱號
     public static String[] NpcLevelName = {"江湖人", "江湖十奇", "武尊", "武皇", "至尊武皇"};
     //修練場數
