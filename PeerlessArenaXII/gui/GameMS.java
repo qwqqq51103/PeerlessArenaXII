@@ -26,6 +26,7 @@ import java.util.Set;
 import static javafx.scene.paint.Color.color;
 import java.awt.Image;
 import java.awt.Toolkit;
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
@@ -114,17 +115,18 @@ public class GameMS extends javax.swing.JFrame {
         清除文字 = new javax.swing.JButton();
         門派 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         背包 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton4 = new javax.swing.JRadioButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        ItemText = new javax.swing.JTextArea();
+        useHp = new javax.swing.JRadioButton();
+        useSvg = new javax.swing.JRadioButton();
+        useMoon = new javax.swing.JRadioButton();
+        useNight = new javax.swing.JRadioButton();
+        applyHp = new javax.swing.JButton();
+        applyMoon = new javax.swing.JButton();
+        applyNight = new javax.swing.JButton();
+        applySvg = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("你好！我是來打雜的");
@@ -526,46 +528,76 @@ public class GameMS extends javax.swing.JFrame {
         主畫面.addTab("打怪打怪囉", 打怪修煉);
 
         jLabel1.setForeground(new java.awt.Color(204, 0, 0));
-        jLabel1.setText("jLabel1");
+        jLabel1.setText("門派技能樹");
+
+        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Joe\\Downloads\\1655109267916.png")); // NOI18N
+        jButton1.setIconTextGap(-45);
 
         javax.swing.GroupLayout 門派Layout = new javax.swing.GroupLayout(門派);
         門派.setLayout(門派Layout);
         門派Layout.setHorizontalGroup(
             門派Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(門派Layout.createSequentialGroup()
-                .addGap(67, 67, 67)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(103, Short.MAX_VALUE))
+                .addGroup(門派Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(門派Layout.createSequentialGroup()
+                        .addGap(254, 254, 254)
+                        .addComponent(jLabel1))
+                    .addGroup(門派Layout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(264, 264, 264))
         );
         門派Layout.setVerticalGroup(
             門派Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(門派Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(146, Short.MAX_VALUE))
         );
 
         主畫面.addTab("門派", 門派);
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane3.setViewportView(jTextArea1);
+        ItemText.setColumns(20);
+        ItemText.setRows(5);
+        jScrollPane3.setViewportView(ItemText);
 
-        jRadioButton1.setText("jRadioButton1");
+        useHp.setText("金創藥");
+        useHp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                useHpActionPerformed(evt);
+            }
+        });
 
-        jRadioButton2.setText("jRadioButton2");
+        useSvg.setText("海洋之星");
+        useSvg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                useSvgActionPerformed(evt);
+            }
+        });
 
-        jRadioButton3.setText("jRadioButton3");
+        useMoon.setText("月之星");
+        useMoon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                useMoonActionPerformed(evt);
+            }
+        });
 
-        jRadioButton4.setText("jRadioButton6");
+        useNight.setText("夜之星");
+        useNight.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                useNightActionPerformed(evt);
+            }
+        });
 
-        jButton1.setText("jButton1");
+        applyHp.setText("使用");
 
-        jButton2.setText("jButton2");
+        applyMoon.setText("使用");
 
-        jButton3.setText("jButton3");
+        applyNight.setText("使用");
 
-        jButton4.setText("jButton5");
+        applySvg.setText("使用");
 
         javax.swing.GroupLayout 背包Layout = new javax.swing.GroupLayout(背包);
         背包.setLayout(背包Layout);
@@ -575,25 +607,25 @@ public class GameMS extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addGroup(背包Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(背包Layout.createSequentialGroup()
-                        .addComponent(jRadioButton4)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton4)
+                        .addComponent(useSvg)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(applySvg)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(背包Layout.createSequentialGroup()
                         .addGroup(背包Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(背包Layout.createSequentialGroup()
-                                .addComponent(jRadioButton1)
+                                .addComponent(useHp)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton1))
+                                .addComponent(applyHp))
                             .addGroup(背包Layout.createSequentialGroup()
-                                .addComponent(jRadioButton2)
+                                .addComponent(useMoon)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton2))
+                                .addComponent(applyMoon))
                             .addGroup(背包Layout.createSequentialGroup()
-                                .addComponent(jRadioButton3)
+                                .addComponent(useNight)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton3)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                                .addComponent(applyNight)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(29, 29, 29))))
         );
@@ -604,22 +636,22 @@ public class GameMS extends javax.swing.JFrame {
                 .addGroup(背包Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(背包Layout.createSequentialGroup()
                         .addGroup(背包Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jRadioButton1)
-                            .addComponent(jButton1))
+                            .addComponent(useHp)
+                            .addComponent(applyHp))
                         .addGap(34, 34, 34)
                         .addGroup(背包Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jRadioButton2)
-                            .addComponent(jButton2))
+                            .addComponent(applyMoon)
+                            .addComponent(useMoon))
                         .addGap(34, 34, 34)
                         .addGroup(背包Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jRadioButton3)
-                            .addComponent(jButton3)))
+                            .addComponent(applyNight)
+                            .addComponent(useNight)))
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34)
                 .addGroup(背包Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButton4)
-                    .addComponent(jButton4))
-                .addContainerGap(49, Short.MAX_VALUE))
+                    .addComponent(applySvg)
+                    .addComponent(useSvg))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         主畫面.addTab("背包", 背包);
@@ -795,6 +827,40 @@ public class GameMS extends javax.swing.JFrame {
         Sduf(2);
     }//GEN-LAST:event_智力增加ActionPerformed
 
+    private void useMoonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_useMoonActionPerformed
+        // TODO add your handling code here:
+        bt.add(useMoon);
+        if (useMoon.isSelected() == true) {
+            Item(2);
+        }
+    }//GEN-LAST:event_useMoonActionPerformed
+
+    private void useHpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_useHpActionPerformed
+        // TODO add your handling code here:
+        bt.add(useHp);
+        if (useHp.isSelected() == true) {
+            Item(1);
+        }
+    }//GEN-LAST:event_useHpActionPerformed
+
+    private void useNightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_useNightActionPerformed
+        // TODO add your handling code here:
+        bt.add(useNight);
+        if (useNight.isSelected() == true) {
+            Item(3);
+        }
+    }//GEN-LAST:event_useNightActionPerformed
+
+    private void useSvgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_useSvgActionPerformed
+
+        bt.add(useSvg);
+        if (useSvg.isSelected() == true) {
+            Item(4);
+        }
+    }//GEN-LAST:event_useSvgActionPerformed
+
+    ButtonGroup bt = new ButtonGroup();
+
     /**
      * @param args the command line arguments
      */
@@ -911,6 +977,7 @@ public class GameMS extends javax.swing.JFrame {
         怪物.setEnabled(false);
     }
 
+    //諭示能力
     void Sduf(int see) {
         StringBuilder value = new StringBuilder();
         StringBuilder value1 = new StringBuilder();
@@ -955,6 +1022,7 @@ public class GameMS extends javax.swing.JFrame {
         }
     }
 
+    //經驗進度條
     void Bar() {
         String fexp = Integer.toString(GameVar.fexp[GameVar.ChrLevel]);
         String exp = Integer.toString(GameVar.ChrExp);
@@ -965,34 +1033,58 @@ public class GameMS extends javax.swing.JFrame {
         }
         jProgressBar1.setValue(GameVar.ChrExp);
         jProgressBar1.setString("經驗 : " + exp + "/" + fexp);
-        
-//        if (GameVar.ChrExp >= GameVar.exp[GameVar.ChrLevel - 1]) {
-//            jProgressBar1.setMaximum(GameVar.exp[GameVar.ChrLevel - 1]);
-//        } else {
-//            jProgressBar1.setValue(GameVar.ChrExp);
-//            jProgressBar1.setMaximum(GameVar.exp[GameVar.ChrLevel - 1]);
-//        }
     }
 
+    //背包說明
+    void Item(int i) {
+        StringBuilder value = new StringBuilder();
+        switch (i) {
+            case 1:
+                value.append("金瘡藥幾乎是江湖人士必備藥品，\n這是一種白色的粉末狀藥粉，\n主治刀斧損傷，跌撲打碎，\n可恢復1000點內傷。");
+                ItemText.setText(null);
+                ItemText.setText(value.toString());
+                break;
+            case 2:
+                value.append("提升最大ATK");
+                ItemText.setText(null);
+                ItemText.setText(value.toString());
+                break;
+            case 3:
+                value.append("提升最小ATK");
+                ItemText.setText(null);
+                ItemText.setText(value.toString());
+                break;
+            case 4:
+                value.append("煉化用");
+                ItemText.setText(null);
+                ItemText.setText(value.toString());
+                break;
+            default:
+                break;
+        }
+    }
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea ItemText;
     private javax.swing.JLabel Level;
     private javax.swing.JLabel Name;
+    private javax.swing.JButton applyHp;
+    private javax.swing.JButton applyMoon;
+    private javax.swing.JButton applyNight;
+    private javax.swing.JButton applySvg;
     public static javax.swing.JTextPane chatLog;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JProgressBar jProgressBar1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JScrollPane outText;
+    private javax.swing.JRadioButton useHp;
+    private javax.swing.JRadioButton useMoon;
+    private javax.swing.JRadioButton useNight;
+    private javax.swing.JRadioButton useSvg;
     private javax.swing.JTabbedPane 主畫面;
     private javax.swing.JPanel 人物資訊;
     private javax.swing.JLabel 剩餘能力點;
