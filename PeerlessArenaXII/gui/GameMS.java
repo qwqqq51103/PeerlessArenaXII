@@ -26,6 +26,7 @@ import java.util.Set;
 import static javafx.scene.paint.Color.color;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.io.IOException;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -177,7 +178,7 @@ public class GameMS extends javax.swing.JFrame {
         人物資訊Layout.setHorizontalGroup(
             人物資訊Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, 人物資訊Layout.createSequentialGroup()
-                .addGap(0, 381, Short.MAX_VALUE)
+                .addGap(0, 378, Short.MAX_VALUE)
                 .addComponent(開始)
                 .addGap(12, 12, 12)
                 .addComponent(更新)
@@ -420,7 +421,7 @@ public class GameMS extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(選擇夥伴))
                     .addComponent(同行奇遇))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33))
         );
@@ -530,8 +531,8 @@ public class GameMS extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(204, 0, 0));
         jLabel1.setText("門派技能樹");
 
-        jButton1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Joe\\Downloads\\1655109267916.png")); // NOI18N
-        jButton1.setIconTextGap(-45);
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IU.jpg"))); // NOI18N
+        jButton1.setIconTextGap(0);
 
         javax.swing.GroupLayout 門派Layout = new javax.swing.GroupLayout(門派);
         門派.setLayout(門派Layout);
@@ -701,16 +702,23 @@ public class GameMS extends javax.swing.JFrame {
     }//GEN-LAST:event_更新ActionPerformed
 
     private void 開始ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_開始ActionPerformed
-        // TODO add your handling code here:
-        if (ap.i == true) {
-            a = "人物資訊：已有名字！！";
-            printfChatLog(a, 1);
-        } else {
-            ap.setName();
+        try {
+            // TODO add your handling code here:
+            if (ap.i == true) {
+                a = "人物資訊：已有名字！！";
+                printfChatLog(a, 1);
+            } else {
+                ap.setName();
+            }
+            Name.setText("姓名 : " + GameVar.PlayerName);
+            Updata();
+            CdvUpdata();
+            ap.iplog();
+        } catch (SecurityException ex) {
+            Logger.getLogger(GameMS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(GameMS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        Name.setText("姓名 : " + GameVar.PlayerName);
-        Updata();
-        CdvUpdata();
     }//GEN-LAST:event_開始ActionPerformed
 
     private void 選擇怪物ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_選擇怪物ActionPerformed

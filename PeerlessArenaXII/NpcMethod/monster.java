@@ -60,6 +60,7 @@ public class monster {
                 b = "玩家目前血量 : " + cdv.HPMIN + "\t\t怪物目前血量 : " + mv.mobHPMIN[gc.mobnums - 1];
                 printfChatLog(b, 3);
                 ap.RonDamge(mv.mobLV[gc.mobnums - 1], mv.mobHP[gc.mobnums - 1], mv.mobSTRMAX[gc.mobnums - 1], mv.mobSTRMIN[gc.mobnums - 1], mv.mobDEF[gc.mobnums - 1]);
+                mef.mobDebuff();
                 ap.playRonDange(var.ChrLevel, cdv.STRMIN, cdv.STRMAX, cdv.HPMIN, 0, 0, mv.mobHPMIN[gc.mobnums - 1], mv.mobDEF[gc.mobnums - 1]);
                 if (var.isDie == false) {
                     a
@@ -67,6 +68,8 @@ public class monster {
                             + i
                             + " / "
                             + ron
+                            + "\n攻擊 : "
+                            + cdv.STRMIN + " = " + cdv.STRMAX
                             + "\n怪物傷害 : "
                             + ap.damge + "\t\t\t"
                             + "玩家傷害 : "

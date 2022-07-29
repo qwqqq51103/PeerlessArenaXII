@@ -1,4 +1,4 @@
-  /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -21,12 +21,20 @@ import PeerlessArenaXII.NpcMethod.MobEffect;
 import PeerlessArenaXII.npcmethod.monster;
 import PeerlessArenaXII.MobVar;
 import PeerlessArenaXII.npcmethod.monster;
+import java.io.IOException;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.io.*;
+import org.apache.mina.common.IoSession;
 
 /**
  *
  * @author qwqqq
  */
 public class ArenaPlayer {
+
+    public static Logger logger = Logger.getLogger(ArenaPlayer.class.getName());
 
     GameVar var = new GameVar();
     GameContent gc = new GameContent();
@@ -226,7 +234,6 @@ public class ArenaPlayer {
         }
         int num = (int) (Math.random() * chrStrNum);
         Pdamge = eq[num];
-//        mef.mobDebuff();
         mobDange(Pdamge, mobHPMIN, mobDef);
     }
 
@@ -247,5 +254,41 @@ public class ArenaPlayer {
         mv.mobHPMIN[gc.mobnums - 1] = mv.mobHP[gc.mobnums - 1];
         a = "取得勝利";
         printfChatLog(a, 3);
+    }
+
+    private final List<String> BlockedIP = new ArrayList<String>();
+
+    public void session(final IoSession session) throws Exception {
+        final String address = session.getRemoteAddress().toString().split(":")[0];
+        if (BlockedIP.contains(address)) {
+            session.close();
+            return;
+        }
+    }
+    public static String ip = null;
+
+    public static String getIpAddr(IoSession session) {
+        if (session == null || session.getRemoteAddress() == null) {
+            return "";
+        }
+        try {
+            ip = session.getRemoteAddress().toString();
+            if (ip.indexOf(':') > 0) {
+                ip = ip.substring(0, ip.indexOf(':'));
+            } else {
+                return "";
+            }
+            ip = ip.replace("/", "");
+            return ip;
+        } catch (Exception ex) {
+            return "";
+        }
+    }
+
+    public void iplog() throws SecurityException, IOException {
+        FileHandler file = new FileHandler("D:/LOG/iplog.txt");
+        file.setLevel(Level.INFO);
+        logger.addHandler(file);
+        logger.info("IP已登入");
     }
 }
