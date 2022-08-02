@@ -558,10 +558,14 @@
                   <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="ron" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="ronBut" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="跳過戰鬥" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
+                          <Group type="102" attributes="0">
                               <Component id="jScrollPane2" min="-2" pref="475" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
@@ -581,7 +585,7 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPane2" pref="217" max="32767" attributes="0"/>
+                          <Component id="jScrollPane2" pref="221" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               <Component id="清除文字" min="-2" max="-2" attributes="0"/>
@@ -593,6 +597,8 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="選擇怪物" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="跳過戰鬥" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="ronBut" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="ron" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -656,6 +662,19 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="&#x6e05;&#x9664;&#x6587;&#x5b57;ActionPerformed"/>
               </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="ronBut">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#x78ba;&#x8a8d;"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ronButActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JTextField" name="ron">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="&#x56de;&#x5408;"/>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>

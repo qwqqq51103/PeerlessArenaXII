@@ -114,6 +114,8 @@ public class GameMS extends javax.swing.JFrame {
         跳過戰鬥 = new javax.swing.JCheckBox();
         復活 = new javax.swing.JButton();
         清除文字 = new javax.swing.JButton();
+        ronBut = new javax.swing.JButton();
+        ron = new javax.swing.JTextField();
         門派 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -489,6 +491,15 @@ public class GameMS extends javax.swing.JFrame {
             }
         });
 
+        ronBut.setText("確認");
+        ronBut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ronButActionPerformed(evt);
+            }
+        });
+
+        ron.setText("回合");
+
         javax.swing.GroupLayout 打怪修煉Layout = new javax.swing.GroupLayout(打怪修煉);
         打怪修煉.setLayout(打怪修煉Layout);
         打怪修煉Layout.setHorizontalGroup(
@@ -496,7 +507,11 @@ public class GameMS extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, 打怪修煉Layout.createSequentialGroup()
                 .addGroup(打怪修煉Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(打怪修煉Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap()
+                        .addComponent(ron, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ronBut)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(跳過戰鬥))
                     .addGroup(打怪修煉Layout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -513,7 +528,7 @@ public class GameMS extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, 打怪修煉Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(打怪修煉Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
                     .addGroup(打怪修煉Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(清除文字)
@@ -522,7 +537,9 @@ public class GameMS extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(打怪修煉Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(選擇怪物)
-                    .addComponent(跳過戰鬥))
+                    .addComponent(跳過戰鬥)
+                    .addComponent(ronBut)
+                    .addComponent(ron, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -867,6 +884,13 @@ public class GameMS extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_useSvgActionPerformed
 
+    private void ronButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ronButActionPerformed
+        // TODO add your handling code here:
+        String a = ron.getText();
+        int b = Integer.parseInt(a);
+        mob.toRon(b);
+    }//GEN-LAST:event_ronButActionPerformed
+
     ButtonGroup bt = new ButtonGroup();
 
     /**
@@ -1089,6 +1113,8 @@ public class GameMS extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane outText;
+    private javax.swing.JTextField ron;
+    private javax.swing.JButton ronBut;
     private javax.swing.JRadioButton useHp;
     private javax.swing.JRadioButton useMoon;
     private javax.swing.JRadioButton useNight;

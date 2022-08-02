@@ -32,6 +32,7 @@ public class monster {
     MobVar mv = new MobVar();
     String a;
     public static int vt = 0;
+    public static int ron;
 
     //(選擇怪物)
     public void monster() {
@@ -46,7 +47,6 @@ public class monster {
     //打怪
     public void atkmonster() {
         //回合
-        int ron = 10;
         JOptionPane.showMessageDialog(null, "您目前選擇的是 " + mv.mobname[gc.mobnums - 1] + " 怪物", "絕代江湖", JOptionPane.PLAIN_MESSAGE);
         vt = 0;
         String b;
@@ -125,5 +125,22 @@ public class monster {
             var.bossCount++;
         }
         JOptionPane.showMessageDialog(null, "你沒有資格挑戰最終BOSS，請完成同行任務！！", "絕代江湖", JOptionPane.PLAIN_MESSAGE);
+    }
+
+    public void toRon(int ron) {
+        if (ron >= 10 && var.money >= ron) {
+            if (ron >= 99 && var.money >= ron) {
+                this.ron = 99;
+                var.money -= ron;
+            } else {
+                this.ron = ron;
+                var.money -= ron;
+            }
+        } else if (ron <= 10) {
+            this.ron = ron;
+        } else {
+            a = "系統喇叭 : 你沒有足夠的金幣";
+            printfChatLog(a, 1);
+        }
     }
 }
